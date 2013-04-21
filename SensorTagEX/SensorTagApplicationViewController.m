@@ -17,7 +17,6 @@
 @synthesize d;
 @synthesize sensorsEnabled;
 
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -295,9 +294,6 @@
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     //NSLog(@"didUpdateValueForCharacteristic = %@",characteristic.UUID);
     
-    float ACCELCHANGECUTTOFF = 0.4;
-    float GYROCHANGECUTOFF = 0.4;
-    
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Accelerometer data UUID"]]]) {
         
         float oldValX = self.currentVal.accX;
@@ -333,15 +329,19 @@
         
         if (movementVector > ACCELCHANGECUTTOFF)
         {
+            /*
             NSString* stringToEmail = [NSString stringWithFormat:@"X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG", x, y, z];
             NSLog(@"string: %@", stringToEmail);
-            
+             */
+
             // send request to our server with data
-            NSURL *url = [NSURL URLWithString:@"http://requestb.in/q92caxq9"];
+            NSString *baseURL = @"http://skybridge.kyri.com/";
+            NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, @"DUMMY_UUID"];
+            NSURL *url = [NSURL URLWithString:urlString];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             
             AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+                NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
             } failure:nil];
             
             [operation start];
@@ -404,18 +404,22 @@
         float dz = (z-oldValZ);
         float movementVector2 = dx*dx + dy*dy + dz*dz;
         
-        NSString* stringToEmail = [NSString stringWithFormat: @"Gyro Data: X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG \n", x, y, z];
+        /*
+         NSString* stringToEmail = [NSString stringWithFormat: @"Gyro Data: X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG \n", x, y, z];
+         NSLog(stringToEmail);
+         */
+        
         
         if (movementVector2 > GYROCHANGECUTOFF)
         {
-            NSLog(@"string: %@", stringToEmail);
-            
             // send request to our server with data
-            NSURL *url = [NSURL URLWithString:@"http://requestb.in/q92caxq9"];
+            NSString *baseURL = @"http://skybridge.kyri.com/";
+            NSString *urlString = [NSString stringWithFormat:@"%@?action=gyro&uuid=%@", baseURL, @"DUMMY_UUID"];
+            NSURL *url = [NSURL URLWithString:urlString];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             
             AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+                NSLog(@"%@: %@", [JSON valueForKeyPath:@"message"], [JSON valueForKeyPath:@"origin"]);
             } failure:nil];
             
             [operation start];

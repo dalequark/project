@@ -11,13 +11,13 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{/*
+{
     // set up device chooser list
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
     UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:dS];
     self.window.rootViewController = rC;
-   */ 
+   
     [self.window makeKeyAndVisible];
     return YES;
 }
