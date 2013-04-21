@@ -12,6 +12,7 @@
 		7F6FC8C516D3AEA500A5BAB9 /* _icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6FC8C416D3AEA500A5BAB9 /* _icon_72.png */; };
 		7F6FC8C716D3AEAD00A5BAB9 /* _icon@2x_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6FC8C616D3AEAD00A5BAB9 /* _icon@2x_144.png */; };
 		7F6FC8C916D3AEDA00A5BAB9 /* _icon@2x_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6FC8C816D3AEDA00A5BAB9 /* _icon@2x_114.png */; };
+		7FA453071724ACB70074FE1E /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA453061724ACB70074FE1E /* SuccessViewController.m */; };
 		7FF608EB1654FBE1004F4562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF608EA1654FBE1004F4562 /* UIKit.framework */; };
 		7FF608ED1654FBE1004F4562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF608EC1654FBE1004F4562 /* Foundation.framework */; };
 		7FF608EF1654FBE1004F4562 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF608EE1654FBE1004F4562 /* CoreGraphics.framework */; };
@@ -54,6 +55,8 @@
 		7F6FC8C416D3AEA500A5BAB9 /* _icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _icon_72.png; sourceTree = "<group>"; };
 		7F6FC8C616D3AEAD00A5BAB9 /* _icon@2x_144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_icon@2x_144.png"; sourceTree = "<group>"; };
 		7F6FC8C816D3AEDA00A5BAB9 /* _icon@2x_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_icon@2x_114.png"; sourceTree = "<group>"; };
+		7FA453051724ACB70074FE1E /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessViewController.h; path = ../SuccessViewController.h; sourceTree = "<group>"; };
+		7FA453061724ACB70074FE1E /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessViewController.m; path = ../SuccessViewController.m; sourceTree = "<group>"; };
 		7FF608E61654FBE1004F4562 /* taskyhttpdev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskyhttpdev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF608EA1654FBE1004F4562 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7FF608EC1654FBE1004F4562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */,
+				7FA453051724ACB70074FE1E /* SuccessViewController.h */,
+				7FA453061724ACB70074FE1E /* SuccessViewController.m */,
 				7FF609131654FC5D004F4562 /* Sensors.h */,
 				7FF609141654FC5D004F4562 /* Sensors.m */,
 				7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */,
@@ -334,6 +339,7 @@
 				D59F6C9F17233ED100BC0EE4 /* AFURLConnectionOperation.m in Sources */,
 				D59F6CA017233ED100BC0EE4 /* AFXMLRequestOperation.m in Sources */,
 				D59F6CA117233ED100BC0EE4 /* UIImageView+AFNetworking.m in Sources */,
+				7FA453071724ACB70074FE1E /* SuccessViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
