@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	7F58EB28171F8D8D00C21E41 /* SensorTagEX */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SensorTagEX;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	7F58EB43171F8DB100C21E41 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	7F58EB44171F8DB100C21E41 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	7F58EB52171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609071654FC3E004F4562 /* BLEDevice.h */;
+		name = "BLEDevice.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 635;
+		vrLoc = 0;
+	};
+	7F58EB53171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609081654FC3E004F4562 /* BLEDevice.m */;
+		name = "BLEDevice.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 0;
+	};
+	7F58EB54171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609091654FC3E004F4562 /* BLEUtility.h */;
+		name = "BLEUtility.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1409;
+		vrLoc = 0;
+	};
+	7F58EB55171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF6090A1654FC3E004F4562 /* BLEUtility.m */;
+		name = "BLEUtility.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1800;
+		vrLoc = 0;
+	};
+	7F58EB56171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7FF609001654FBE1004F4562 /* Default-568h@2x.png */;
+	};
+	7F58EB57171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7FF608FC1654FBE1004F4562 /* Default.png */;
+	};
+	7F58EB58171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7FF608FE1654FBE1004F4562 /* Default@2x.png */;
+	};
+	7F58EB59171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF6090D1654FC50004F4562 /* deviceCellTemplate.h */;
+		name = "deviceCellTemplate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 0;
+	};
+	7F58EB5A171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF6090E1654FC50004F4562 /* deviceCellTemplate.m */;
+		name = "deviceCellTemplate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1430;
+		vrLoc = 0;
+	};
+	7F58EB5B171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF6090F1654FC50004F4562 /* deviceSelector.h */;
+		name = "deviceSelector.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 633;
+		vrLoc = 0;
+	};
+	7F58EB5C171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609101654FC50004F4562 /* deviceSelector.m */;
+		name = "deviceSelector.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1094;
+		vrLoc = 0;
+	};
+	7F58EB5D171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7F43390F16D3ABAF006FE682 /* gyroscope.png */;
+	};
+	7F58EB5E171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF608F41654FBE1004F4562 /* en */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 45;
+		vrLoc = 0;
+	};
+	7F58EB5F171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7F43391516D3ABAF006FE682 /* objecttemperature.png */;
+	};
+	7F58EB60171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7F43391616D3ABAF006FE682 /* relativehumidity.png */;
+	};
+	7F58EB61171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609131654FC5D004F4562 /* Sensors.h */;
+		name = "Sensors.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 0;
+	};
+	7F58EB62171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609141654FC5D004F4562 /* Sensors.m */;
+		name = "Sensors.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1720;
+		vrLoc = 0;
+	};
+	7F58EB63171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */;
+		name = "SensorTagApplicationViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1541;
+		vrLoc = 0;
+	};
+	7F58EB64171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */;
+		name = "SensorTagApplicationViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1438;
+		vrLoc = 0;
+	};
+	7F58EB65171F8EDE00C21E41 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7FF608F21654FBE1004F4562 /* SensorTagEX-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/fabrol/Dropbox/COS436/SensorTag iOS SourceCode/SensorTag Examples/Sensor Example Source Code 1.0.0/SensorTagEX/SensorTagEX-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	7F58EB66171F8EDE00C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF608F81654FBE1004F4562 /* SensorTagEX-Prefix.pch */;
+		name = "SensorTagEX-Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 325;
+		vrLoc = 0;
+	};
+	7F58EB67171F8EDE00C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7F43391716D3ABAF006FE682 /* temperature.png */;
+	};
+	7F58EB7E171F903500C21E41 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7FF608F61654FBE1004F4562 /* main.m */;
+	};
+	7F58EB7F171F90B500C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF608F61654FBE1004F4562 /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 373;
+		vrLoc = 0;
+	};
+	7F58EB80171F90B500C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF608F61654FBE1004F4562 /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 373;
+		vrLoc = 0;
+	};
+	7F58EB83171F90B500C21E41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7FF608F61654FBE1004F4562 /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 373;
+		vrLoc = 0;
+	};
+	7FF608DD1654FBE1004F4562 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 7F58EB28171F8D8D00C21E41 /* SensorTagEX */;
+		activeSDKPreference = iphonesimulator4.3;
+		activeTarget = 7FF608E51654FBE1004F4562 /* SensorTagEX */;
+		codeSenseManager = 7F58EB44171F8DB100C21E41 /* Code sense */;
+		executables = (
+			7F58EB28171F8D8D00C21E41 /* SensorTagEX */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					963,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					977,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 387943821;
+			PBXWorkspaceStateSaveDate = 387943821;
+		};
+		perUserProjectItems = {
+			7F58EB52171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB52171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB53171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB53171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB54171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB54171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB55171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB55171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB56171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB56171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB57171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB57171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB58171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB58171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB59171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB59171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB5A171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB5A171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB5B171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB5B171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB5C171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB5C171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB5D171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB5D171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB5E171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB5E171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB5F171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB5F171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB60171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB60171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB61171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB61171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB62171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB62171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB63171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB63171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB64171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB64171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB65171F8EDE00C21E41 /* PlistBookmark */ = 7F58EB65171F8EDE00C21E41 /* PlistBookmark */;
+			7F58EB66171F8EDE00C21E41 /* PBXTextBookmark */ = 7F58EB66171F8EDE00C21E41 /* PBXTextBookmark */;
+			7F58EB67171F8EDE00C21E41 /* PBXBookmark */ = 7F58EB67171F8EDE00C21E41 /* PBXBookmark */;
+			7F58EB7E171F903500C21E41 /* PBXBookmark */ = 7F58EB7E171F903500C21E41 /* PBXBookmark */;
+			7F58EB7F171F90B500C21E41 /* PBXTextBookmark */ = 7F58EB7F171F90B500C21E41 /* PBXTextBookmark */;
+			7F58EB80171F90B500C21E41 /* PBXTextBookmark */ = 7F58EB80171F90B500C21E41 /* PBXTextBookmark */;
+			7F58EB83171F90B500C21E41 /* PBXTextBookmark */ = 7F58EB83171F90B500C21E41 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 7F58EB43171F8DB100C21E41 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	7FF608E51654FBE1004F4562 /* SensorTagEX */ = {
+		activeExec = 0;
+		executables = (
+			7F58EB28171F8D8D00C21E41 /* SensorTagEX */,
+		);
+	};
+	7FF608F41654FBE1004F4562 /* en */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 45}";
+		};
+	};
+	7FF608F61654FBE1004F4562 /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {917, 316}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 373}";
+			sepNavWindowFrame = "{{60, 52}, {779, 821}}";
+		};
+	};
+	7FF608F81654FBE1004F4562 /* SensorTagEX-Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 325}";
+		};
+	};
+	7FF609071654FC3E004F4562 /* BLEDevice.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 635}";
+		};
+	};
+	7FF609081654FC3E004F4562 /* BLEDevice.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 262}";
+		};
+	};
+	7FF609091654FC3E004F4562 /* BLEUtility.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1409}";
+		};
+	};
+	7FF6090A1654FC3E004F4562 /* BLEUtility.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 1950}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1800}";
+		};
+	};
+	7FF6090D1654FC50004F4562 /* deviceCellTemplate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 1534}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1098}";
+		};
+	};
+	7FF6090E1654FC50004F4562 /* deviceCellTemplate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 6162}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1430}";
+		};
+	};
+	7FF6090F1654FC50004F4562 /* deviceSelector.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 633}";
+		};
+	};
+	7FF609101654FC50004F4562 /* deviceSelector.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 3562}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1094}";
+		};
+	};
+	7FF609131654FC5D004F4562 /* Sensors.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 1391}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 781}";
+		};
+	};
+	7FF609141654FC5D004F4562 /* Sensors.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 3315}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1720}";
+		};
+	};
+	7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 715}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1541}";
+		};
+	};
+	7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1126, 9321}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1438}";
+		};
+	};
+}
