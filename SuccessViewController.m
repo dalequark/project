@@ -28,11 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    // Custom initialization
+
+	// set up the sensortag chooser
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
     deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
     UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:dS];
-    
+    mainWindow.rootViewController = rC;
 }
 
 - (void)didReceiveMemoryWarning

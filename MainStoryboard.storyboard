@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="2" customClass="taskly_guiViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-uR-HgJ">
@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="height" constant="250" id="CVl-V2-ul6"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="The following screens will guide you through a one time setup of your SensorTags.">
+                                    <fragment content="The following screens will guide you through a one time setup of your sensor tags.">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="17" name="Helvetica"/>
@@ -48,7 +48,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Please have your SensorTags ready!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-74-WN4">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Please have your sensor tags ready!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-74-WN4">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.1797542539100786" green="0.00090433453030625" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -60,15 +60,15 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XlK-ac-7bb" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="6Qf-K9-kCY"/>
                             <constraint firstItem="ZHt-1N-Xpi" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9p7-qd-KT5"/>
                             <constraint firstItem="8sK-Vc-vzf" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="32" id="BMv-fo-ZfX"/>
                             <constraint firstItem="ZHt-1N-Xpi" firstAttribute="top" secondItem="3" secondAttribute="top" constant="-24" id="Mht-Ji-pEW"/>
-                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="149" id="R40-rO-cO8"/>
+                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="SH0-3L-Nn9"/>
+                            <constraint firstItem="f5j-uR-HgJ" firstAttribute="centerX" secondItem="XlK-ac-7bb" secondAttribute="centerX" type="default" id="SrV-wP-0vc"/>
                             <constraint firstAttribute="bottom" secondItem="f5j-uR-HgJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="aT2-LX-HVX"/>
-                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="centerX" secondItem="f5j-uR-HgJ" secondAttribute="centerX" type="default" id="awx-5x-Y3O"/>
                             <constraint firstItem="XlK-ac-7bb" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ddb-gJ-qo9"/>
                             <constraint firstAttribute="bottom" secondItem="07A-74-WN4" secondAttribute="bottom" constant="98" id="hm7-eD-u67"/>
                             <constraint firstAttribute="trailing" secondItem="ZHt-1N-Xpi" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mNh-Ut-gRS"/>
@@ -86,12 +86,12 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="oek-od-GeS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oyU-wq-QXm">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwZ-cb-hD6">
                                 <items>
-                                    <navigationItem title="Step 1: Bluetooth setup" id="SeP-aB-Vq5">
+                                    <navigationItem title="1. Enable Bluetooth" id="SeP-aB-Vq5">
                                         <barButtonItem key="backBarButtonItem" title="Setup" id="vuU-cU-WG7"/>
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="lKw-lJ-b3o">
                                             <connections>
@@ -104,10 +104,9 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="275" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-Es-1RQ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="89" id="jew-aA-nqz"/>
-                                    <constraint firstAttribute="width" constant="275" id="xGu-wd-sL6"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="1. Make sure the bluetooth on your device is enabled and discoverable.">
+                                    <fragment content="Make sure Bluetooth on your device is enabled and set to discoverable.">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="17" name="Helvetica"/>
@@ -125,16 +124,13 @@
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="iphone-bluetooth-settings.gif" translatesAutoresizingMaskIntoConstraints="NO" id="fkW-ag-CrV">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="212" id="TWO-Pr-36P"/>
-                                    <constraint firstAttribute="width" constant="141" id="Yb3-Va-hWn"/>
+                                    <constraint firstAttribute="width" constant="134" id="wh0-PX-noo"/>
+                                    <constraint firstAttribute="height" constant="201" id="xJO-yK-nfR"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hO-YV-umb">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="SU7-rd-Qdw"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Proceed">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -148,7 +144,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1hO-YV-umb" firstAttribute="centerX" secondItem="gwZ-cb-hD6" secondAttribute="centerX" type="default" id="CFw-s7-dec"/>
+                            <constraint firstAttribute="trailing" secondItem="fkW-ag-CrV" secondAttribute="trailing" constant="25" id="E1Y-WS-2t8"/>
                             <constraint firstAttribute="bottom" secondItem="1hO-YV-umb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Eef-Zx-LY8"/>
                             <constraint firstItem="gwZ-cb-hD6" firstAttribute="trailing" secondItem="oyU-wq-QXm" secondAttribute="trailing" type="default" id="FAj-6G-J34"/>
                             <constraint firstItem="nNo-qt-8HZ" firstAttribute="top" secondItem="oyU-wq-QXm" secondAttribute="top" constant="61" id="Imt-Ua-197"/>
@@ -157,8 +153,8 @@
                             <constraint firstItem="gwZ-cb-hD6" firstAttribute="top" secondItem="oyU-wq-QXm" secondAttribute="top" type="default" id="cjN-rl-wqa"/>
                             <constraint firstItem="fkW-ag-CrV" firstAttribute="top" secondItem="oyU-wq-QXm" secondAttribute="top" constant="86" id="e1P-Oy-bVG"/>
                             <constraint firstItem="nNo-qt-8HZ" firstAttribute="leading" secondItem="oyU-wq-QXm" secondAttribute="leading" constant="15" id="gUj-2F-pG1"/>
+                            <constraint firstItem="1hO-YV-umb" firstAttribute="centerX" secondItem="gwZ-cb-hD6" secondAttribute="centerX" type="default" id="h3l-6k-Yge"/>
                             <constraint firstItem="1hO-YV-umb" firstAttribute="top" secondItem="P9X-Es-1RQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hzU-n8-T7I"/>
-                            <constraint firstAttribute="trailing" secondItem="fkW-ag-CrV" secondAttribute="trailing" constant="18" id="nj2-jn-COC"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -171,7 +167,7 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="Jbz-AA-H49" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aFq-0m-eBQ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="SensorTag Pairing Button.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-Yx-9z6">
@@ -182,8 +178,8 @@
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pia-qD-wKZ">
                                 <items>
-                                    <navigationItem title="Step 2: Pair Tag" id="FCr-jS-r65">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="wic-lp-XO2">
+                                    <navigationItem title="2. Connect Tag" id="FCr-jS-r65">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="wic-lp-XO2">
                                             <connections>
                                                 <segue destination="oek-od-GeS" kind="modal" id="9Je-j7-Epn"/>
                                             </connections>
@@ -191,7 +187,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2. Press the pairing button on your tag and wait for the system to discover it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="244" translatesAutoresizingMaskIntoConstraints="NO" id="onn-0l-Lxt">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Press the pairing button on your tag." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="244" translatesAutoresizingMaskIntoConstraints="NO" id="onn-0l-Lxt">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CGQ-Cg-9t4"/>
                                     <constraint firstAttribute="width" constant="244" id="WJX-hP-mEL"/>
@@ -201,12 +197,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-f6-hQK">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="A6H-Z2-dHs"/>
-                                    <constraint firstAttribute="width" constant="288" id="Gna-sY-8nl"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Popup to say pairing happened. (or background changing to green)">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -218,17 +210,17 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="nLe-f6-hQK" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="0jQ-Gh-rEf"/>
-                            <constraint firstItem="nLe-f6-hQK" firstAttribute="top" secondItem="onn-0l-Lxt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6hS-jl-lEO"/>
+                            <constraint firstItem="nLe-f6-hQK" firstAttribute="centerX" secondItem="onn-0l-Lxt" secondAttribute="centerX" type="default" id="8h4-Dw-dWE"/>
                             <constraint firstItem="VXN-Yx-9z6" firstAttribute="top" secondItem="aFq-0m-eBQ" secondAttribute="top" constant="78" id="8oz-Kb-h3C"/>
                             <constraint firstItem="pia-qD-wKZ" firstAttribute="top" secondItem="aFq-0m-eBQ" secondAttribute="top" type="default" id="Bga-4s-YRm"/>
                             <constraint firstItem="VXN-Yx-9z6" firstAttribute="leading" secondItem="aFq-0m-eBQ" secondAttribute="leading" constant="53" id="U6U-Cz-3Ee"/>
-                            <constraint firstAttribute="trailing" secondItem="nLe-f6-hQK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Xkz-t4-PID"/>
+                            <constraint firstAttribute="bottom" secondItem="nLe-f6-hQK" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XJb-gH-AM8"/>
                             <constraint firstItem="onn-0l-Lxt" firstAttribute="centerX" secondItem="pia-qD-wKZ" secondAttribute="centerX" type="default" id="rDo-KL-PRA"/>
                             <constraint firstItem="pia-qD-wKZ" firstAttribute="leading" secondItem="aFq-0m-eBQ" secondAttribute="leading" type="default" id="tEP-if-qwd"/>
                             <constraint firstItem="pia-qD-wKZ" firstAttribute="trailing" secondItem="aFq-0m-eBQ" secondAttribute="trailing" type="default" id="xu6-Ij-R7O"/>
+                            <constraint firstAttribute="bottom" secondItem="onn-0l-Lxt" secondAttribute="bottom" constant="88" id="yCj-Bd-vfe"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -241,7 +233,7 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="zzd-OK-Sqi" customClass="SuccessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2f-Uc-huy">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -257,10 +249,18 @@
         <image name="iphone-111-bt-bug-1.png" width="300" height="573"/>
         <image name="iphone-bluetooth-settings.gif" width="320" height="480"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SuccessViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SuccessViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Mgb-aU-tzt"/>

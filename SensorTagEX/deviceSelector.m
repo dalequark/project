@@ -39,12 +39,17 @@
      and text telling the user that we are waiting to detect sensortags
      which should go away once at least one sensortag is added to the view
      */
+    
+    // set up a back button
+    UIBarButtonItem *mailer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(backToWalkthrough)];
+    [self.navigationItem setLeftBarButtonItem:mailer];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)backToWalkthrough
+{
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    
 }
 
 - (void)didReceiveMemoryWarning
