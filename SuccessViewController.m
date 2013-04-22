@@ -8,7 +8,7 @@
 
 #import "SuccessViewController.h"
 #import "deviceSelector.h"
-#import "LandingViewController.h"
+#import "WalkthroughLandingViewController.h"
 
 @interface SuccessViewController ()
 @property (nonatomic, strong) deviceSelector *dS;
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
 	// set up the sensortag chooser
-    UIViewController *parent = [[LandingViewController alloc]init];
+    UIViewController *parent = [[WalkthroughLandingViewController alloc]init];
     UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
     deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
     UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:parent];

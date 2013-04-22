@@ -7,6 +7,7 @@
  */
 
 #import "deviceSelector.h"
+#import "WalkthroughLandingViewController.h"
 
 @interface deviceSelector ()
 
@@ -48,7 +49,9 @@
 
 - (void)backToWalkthrough
 {
-
+    UIViewController *firstScreen = [[WalkthroughLandingViewController alloc]init];
+    [self.navigationController pushViewController:firstScreen animated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
