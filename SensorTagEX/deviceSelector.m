@@ -7,6 +7,7 @@
  */
 
 #import "deviceSelector.h"
+#import "LandingViewController.h"
 
 @interface deviceSelector ()
 
@@ -48,7 +49,10 @@
 
 - (void)backToWalkthrough
 {
-    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+//    [[[UIApplication sharedApplication] delegate] window];
+//    NSLog(@"%@", [self.navigationController.viewControllers objectAtIndex:0] );
+   [self.navigationController popToRootViewControllerAnimated:YES];
+    
     
 }
 
