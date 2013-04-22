@@ -26,6 +26,7 @@
 @property NSMutableArray *sensorsEnabled;
 
 /// Temperature cell
+@property (strong,nonatomic) accelerometerCellTemplate *display;
 @property (strong,nonatomic) accelerometerCellTemplate *acc;
 @property (strong,nonatomic) accelerometerCellTemplate *mag;
 @property (strong,nonatomic) sensorMAG3110 *magSensor;

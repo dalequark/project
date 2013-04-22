@@ -31,6 +31,8 @@
     self = [super initWithStyle:style];
     if (self) {
         self.d = andSensorTag;
+        self.display = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"display"];
+        
         if (!self.acc) {
             self.acc = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Accelerometer"];
             self.acc.accLabel.text = @"Accelerometer";
@@ -146,7 +148,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.sensorsEnabled.count;
+    return self.sensorsEnabled.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
