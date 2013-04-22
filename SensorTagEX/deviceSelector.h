@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "BLEDevice.h"
 #import "SensorTagApplicationViewController.h"
+#import "AFJSONRequestOperation.h"
 
 @interface deviceSelector : UITableViewController <CBCentralManagerDelegate,CBPeripheralDelegate>
 

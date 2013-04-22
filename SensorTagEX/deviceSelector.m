@@ -101,9 +101,31 @@
      */
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[NSString stringWithFormat:@"%d_Cell",indexPath.row]];
     CBPeripheral *p = [self.sensorTags objectAtIndex:indexPath.row];
+
+    /*
+    // TODO XXX retrieve sensor data from the server
+    NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
+    NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",p.name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",CFUUIDCreateString(nil, p.UUID)];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
+    } failure:nil];
+ 
+    [operation start];
+     */
+    NSString *uuid = (__bridge_transfer NSString*)CFUUIDCreateString(nil, p.UUID);
+    if ([@"F9975A13-2051-0933-CFA0-61398837856F" isEqualToString:uuid]) {
+        cell.textLabel.text = @"Go to gym";
+        cell.detailTextLabel.text = @"Every three days";
+    } else if ([@"34F29E64-1B18-DA34-32E3-6100CBB35B3E" isEqualToString:uuid]) {
+        cell.textLabel.text = @"Read HCI textbook";
+        cell.detailTextLabel.text = @"Every seven days";
+    } else {
+        cell.textLabel.text = @"Take vitamins";
+        cell.detailTextLabel.text = @"Every day";
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
