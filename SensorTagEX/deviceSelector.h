@@ -13,10 +13,10 @@
 
 @interface deviceSelector : UITableViewController <CBCentralManagerDelegate,CBPeripheralDelegate>
 
+@property (strong,nonatomic) UIActivityIndicatorView *spinner;
 @property (strong,nonatomic) CBCentralManager *m;
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *sensorTags;
-
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 

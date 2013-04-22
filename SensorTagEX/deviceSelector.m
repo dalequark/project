@@ -26,7 +26,7 @@
         self.m = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         self.nDevices = [[NSMutableArray alloc]init];
         self.sensorTags = [[NSMutableArray alloc]init];
-        self.title = @"SensorTag Example";
+        self.title = @"Connecting...";
     }
     return self;
 }
@@ -42,16 +42,26 @@
      */
     
     // set up a back button
-    UIBarButtonItem *mailer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(backToWalkthrough)];
-    [self.navigationItem setLeftBarButtonItem:mailer];
-
+    UIBarButtonItem *mailer = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStylePlain target:self action:@selector(backToWalkthrough)];
+    [[self navigationItem] setLeftBarButtonItem:mailer];
+    
+    // set up a spinner waiting for sensor tags to connect
+    self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:[self spinner]];
+    [[self navigationItem] setRightBarButtonItem:barButton];
+    [[self spinner] startAnimating];
+    
 }
+
 
 - (void)backToWalkthrough
 {
-    UIViewController *firstScreen = [[WalkthroughLandingViewController alloc]init];
-    [self.navigationController pushViewController:firstScreen animated:YES];
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *firstScreen = (WalkthroughLandingViewController *)[storyboard instantiateInitialViewController];
+    [self.navigationController setNavigationBarHidden:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController setViewControllers:[NSArray arrayWithObjects: firstScreen, nil] animated:YES];
+    //[self.navigationController setView:firstScreen.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,12 +110,12 @@
 }
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        if (self.sensorTags.count > 1) return [NSString stringWithFormat:@"Found %d sensor tags",self.sensorTags.count];
-        else if (self.sensorTags.count == 1) return @"Found a sensor tag";
-        else return @"Connect a sensor tag...";
+    // hack: we're just using this as a trigger to update the view
+    if (section == 0 && self.sensorTags.count >= 1) {
+        // found one or multiple sensor tags
+        [[self spinner] stopAnimating];
+        self.title = @"Available Sensors";
     }
-    
     return @"";
 }
 
@@ -174,7 +184,7 @@
     for (CBService *s in peripheral.services) {
         NSLog(@"Service found : %@",s.UUID);
         if ([s.UUID isEqual:[CBUUID UUIDWithString:@"f000aa00-0451-4000 b000-000000000000"]])  {
-            NSLog(@"This is a SensorTag !");
+            // this is a SensorTag
             found = YES;
         }
     }

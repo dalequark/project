@@ -86,7 +86,7 @@
     else {
         self.d.p.delegate = self;
         [self configureSensorTag];
-        self.title = @"TI BLE Sensor Tag application";
+        self.title = @"Sensor Data"; // XXX this should be the task's name
     }
 }
 
@@ -134,7 +134,7 @@
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Sensors";
+        return @"Logging in progress...";
     }
     return @"";
 }
