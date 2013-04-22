@@ -38,6 +38,9 @@
 		D59F6CA017233ED100BC0EE4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F6C9617233ED100BC0EE4 /* AFXMLRequestOperation.m */; };
 		D59F6CA117233ED100BC0EE4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F6C9817233ED100BC0EE4 /* UIImageView+AFNetworking.m */; };
 		D5AC55AD1724B5C500F6647E /* SensorTagEX-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5AC55AB1724B5C500F6647E /* SensorTagEX-Info.plist */; };
+		D5AC55B21724E81D00F6647E /* WalkthroughLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */; };
+		D5AC55B41724E8DB00F6647E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */; };
+		D5AC55B61724E8E100F6647E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */; };
 		D5DE105F1724A85C00FD1598 /* 170px-Bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */; };
 		D5DE10601724A85C00FD1598 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10571724A85C00FD1598 /* Default-568h@2x.png */; };
 		D5DE10611724A85C00FD1598 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10581724A85C00FD1598 /* Default.png */; };
@@ -104,6 +107,10 @@
 		D59F6C9817233ED100BC0EE4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		D5AC55AB1724B5C500F6647E /* SensorTagEX-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SensorTagEX-Info.plist"; path = "SensorTagEX/SensorTagEX-Info.plist"; sourceTree = "<group>"; };
 		D5AC55AC1724B5C500F6647E /* SensorTagEX-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SensorTagEX-Prefix.pch"; path = "SensorTagEX/SensorTagEX-Prefix.pch"; sourceTree = "<group>"; };
+		D5AC55B01724E81C00F6647E /* WalkthroughLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughLandingViewController.h; sourceTree = "<group>"; };
+		D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughLandingViewController.m; sourceTree = "<group>"; };
+		D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "170px-Bluetooth.png"; sourceTree = "<group>"; };
 		D5DE10571724A85C00FD1598 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D5DE10581724A85C00FD1598 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -121,6 +128,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5AC55B61724E8E100F6647E /* SystemConfiguration.framework in Frameworks */,
+				D5AC55B41724E8DB00F6647E /* MobileCoreServices.framework in Frameworks */,
 				D5DE10691724A90200FD1598 /* CoreBluetooth.framework in Frameworks */,
 				7F43C4491673EB4300FE3D9C /* MessageUI.framework in Frameworks */,
 				7FF608EB1654FBE1004F4562 /* UIKit.framework in Frameworks */,
@@ -135,6 +144,8 @@
 		7FF608DB1654FBE1004F4562 = {
 			isa = PBXGroup;
 			children = (
+				D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */,
+				D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */,
 				D5AC55AB1724B5C500F6647E /* SensorTagEX-Info.plist */,
 				D5AC55AC1724B5C500F6647E /* SensorTagEX-Prefix.pch */,
 				D5DE10681724A90200FD1598 /* CoreBluetooth.framework */,
@@ -169,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */,
+				D5AC55B01724E81C00F6647E /* WalkthroughLandingViewController.h */,
+				D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */,
 				7FA453051724ACB70074FE1E /* SuccessViewController.h */,
 				7FA453061724ACB70074FE1E /* SuccessViewController.m */,
 				7FF609131654FC5D004F4562 /* Sensors.h */,
@@ -346,6 +359,7 @@
 				D59F6CA017233ED100BC0EE4 /* AFXMLRequestOperation.m in Sources */,
 				D59F6CA117233ED100BC0EE4 /* UIImageView+AFNetworking.m in Sources */,
 				7FA453071724ACB70074FE1E /* SuccessViewController.m in Sources */,
+				D5AC55B21724E81D00F6647E /* WalkthroughLandingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -293,7 +293,7 @@
 
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     //NSLog(@"didUpdateValueForCharacteristic = %@",characteristic.UUID);
-    
+
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Accelerometer data UUID"]]]) {
         
         float oldValX = self.currentVal.accX;
@@ -333,10 +333,10 @@
             NSString* stringToEmail = [NSString stringWithFormat:@"X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG", x, y, z];
             NSLog(@"string: %@", stringToEmail);
              */
-
+            
             // send request to our server with data
-            NSString *baseURL = @"http://skybridge.kyri.com/";
-            NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, @"DUMMY_UUID"];
+            NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
+            NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
             NSURL *url = [NSURL URLWithString:urlString];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             
@@ -409,12 +409,11 @@
          NSLog(stringToEmail);
          */
         
-        
         if (movementVector2 > GYROCHANGECUTOFF)
         {
             // send request to our server with data
-            NSString *baseURL = @"http://skybridge.kyri.com/";
-            NSString *urlString = [NSString stringWithFormat:@"%@?action=gyro&uuid=%@", baseURL, @"DUMMY_UUID"];
+            NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
+            NSString *urlString = [NSString stringWithFormat:@"%@?action=gyro&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
             NSURL *url = [NSURL URLWithString:urlString];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Taskly gui View Controller-->
+        <!--WalkthroughLandingViewController-->
         <scene sceneID="5">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="2" customClass="taskly_guiViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="2" userLabel="WalkthroughLandingViewController" customClass="WalkthroughLandingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="-56" y="90"/>
         </scene>
-        <!--View Controller-->
+        <!--WalkthroughStep1ViewController-->
         <scene sceneID="09T-VK-Bus">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="oek-od-GeS" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="oek-od-GeS" userLabel="WalkthroughStep1ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oyU-wq-QXm">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -162,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="377" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--WalkthroughStep2ViewController-->
         <scene sceneID="oMJ-Mz-YiR">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="Jbz-AA-H49" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="Jbz-AA-H49" userLabel="WalkthroughStep2ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aFq-0m-eBQ">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="757" y="98"/>
         </scene>
-        <!--Success View Controller-->
+        <!--SuccessViewController-->
         <scene sceneID="Thj-8j-acI">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="zzd-OK-Sqi" customClass="SuccessViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="zzd-OK-Sqi" userLabel="SuccessViewController" customClass="SuccessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2f-Uc-huy">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -249,14 +249,6 @@
         <image name="iphone-111-bt-bug-1.png" width="300" height="573"/>
         <image name="iphone-bluetooth-settings.gif" width="320" height="480"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SuccessViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SuccessViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

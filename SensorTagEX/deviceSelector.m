@@ -48,8 +48,7 @@
 
 - (void)backToWalkthrough
 {
-    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
-    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,8 +98,9 @@
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        if (self.sensorTags.count > 1 )return [NSString stringWithFormat:@"%d SensorTags Found",self.sensorTags.count];
-        else return [NSString stringWithFormat:@"%d SensorTag Found",self.sensorTags.count];
+        if (self.sensorTags.count > 1) return [NSString stringWithFormat:@"Found %d sensor tags",self.sensorTags.count];
+        else if (self.sensorTags.count == 1) return @"Found a sensor tag";
+        else return @"Connect a sensor tag...";
     }
     
     return @"";
