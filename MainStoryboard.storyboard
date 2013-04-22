@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-uR-HgJ">
+                            <button opaque="NO" autoresizesSubviews="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-uR-HgJ">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="vyV-OX-98n"/>
                                 </constraints>
@@ -28,58 +28,47 @@
                                     <segue destination="oek-od-GeS" kind="modal" modalTransitionStyle="crossDissolve" id="Mgb-aU-tzt"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlK-ac-7bb">
-                                <items>
-                                    <navigationItem title="Sensor Setup" id="qgi-an-pRl"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ZHt-1N-Xpi">
+                            <label opaque="NO" autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="left" text="Please have a sensor tag ready!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHt-1N-Xpi">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="CVl-V2-ul6"/>
+                                    <constraint firstAttribute="height" constant="48" id="eMd-Hw-Hb2"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="The following screens will guide you through a one time setup of your sensor tags.">
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="17" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Please have your sensor tags ready!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-74-WN4">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.1797542539100786" green="0.00090433453030625" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="170px-Bluetooth.png" translatesAutoresizingMaskIntoConstraints="NO" id="8sK-Vc-vzf">
+                            <label opaque="NO" autoresizesSubviews="NO" contentMode="left" text="The following screens will guide you through a one time setup of your sensor tags." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="07A-74-WN4">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Ufm-NL-Gvf"/>
-                                    <constraint firstAttribute="width" constant="240" id="aGq-tR-n6X"/>
+                                    <constraint firstAttribute="width" constant="276" id="A9E-aA-VHf"/>
+                                    <constraint firstAttribute="height" constant="77" id="sTe-1F-Ij2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.035346622718126289" green="0.24375233026649298" blue="0.74475628396739135" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="170px-Bluetooth.png" translatesAutoresizingMaskIntoConstraints="NO" id="8sK-Vc-vzf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="1G8-5A-4vU"/>
+                                    <constraint firstAttribute="width" constant="600" id="tVF-RO-SKs"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XlK-ac-7bb" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="6Qf-K9-kCY"/>
-                            <constraint firstItem="ZHt-1N-Xpi" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9p7-qd-KT5"/>
-                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="32" id="BMv-fo-ZfX"/>
-                            <constraint firstItem="ZHt-1N-Xpi" firstAttribute="top" secondItem="3" secondAttribute="top" constant="-24" id="Mht-Ji-pEW"/>
-                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="SH0-3L-Nn9"/>
-                            <constraint firstItem="f5j-uR-HgJ" firstAttribute="centerX" secondItem="XlK-ac-7bb" secondAttribute="centerX" type="default" id="SrV-wP-0vc"/>
+                            <constraint firstAttribute="bottom" secondItem="ZHt-1N-Xpi" secondAttribute="bottom" constant="86" id="1b3-N9-IPp"/>
+                            <constraint firstItem="ZHt-1N-Xpi" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="69P-9k-UNP"/>
+                            <constraint firstAttribute="trailing" secondItem="ZHt-1N-Xpi" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Il5-eN-jS4"/>
+                            <constraint firstItem="ZHt-1N-Xpi" firstAttribute="centerX" secondItem="07A-74-WN4" secondAttribute="centerX" type="default" id="J3t-K8-hBH"/>
+                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="centerX" secondItem="07A-74-WN4" secondAttribute="centerX" type="default" id="NaM-30-fE6"/>
+                            <constraint firstItem="ZHt-1N-Xpi" firstAttribute="centerX" secondItem="f5j-uR-HgJ" secondAttribute="centerX" type="default" id="R1W-Lr-sJy"/>
                             <constraint firstAttribute="bottom" secondItem="f5j-uR-HgJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="aT2-LX-HVX"/>
-                            <constraint firstItem="XlK-ac-7bb" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ddb-gJ-qo9"/>
-                            <constraint firstAttribute="bottom" secondItem="07A-74-WN4" secondAttribute="bottom" constant="98" id="hm7-eD-u67"/>
-                            <constraint firstAttribute="trailing" secondItem="ZHt-1N-Xpi" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mNh-Ut-gRS"/>
-                            <constraint firstItem="07A-74-WN4" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="njk-Lh-OeF"/>
-                            <constraint firstItem="XlK-ac-7bb" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="riH-ap-Fdh"/>
+                            <constraint firstAttribute="bottom" secondItem="07A-74-WN4" secondAttribute="bottom" constant="127" id="kBl-w2-iwU"/>
+                            <constraint firstItem="8sK-Vc-vzf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="uqy-x2-MDt"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-56" y="90"/>
+            <point key="canvasLocation" x="-160" y="-364"/>
         </scene>
         <!--WalkthroughStep1ViewController-->
         <scene sceneID="09T-VK-Bus">
@@ -95,7 +84,7 @@
                                         <barButtonItem key="backBarButtonItem" title="Setup" id="vuU-cU-WG7"/>
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="lKw-lJ-b3o">
                                             <connections>
-                                                <segue destination="2" kind="modal" modalTransitionStyle="crossDissolve" id="4vE-79-8Zd"/>
+                                                <segue destination="2" kind="modal" identifier="" modalTransitionStyle="crossDissolve" id="4vE-79-8Zd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -160,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttf-dN-NCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="98"/>
+            <point key="canvasLocation" x="-187" y="310"/>
         </scene>
         <!--WalkthroughStep2ViewController-->
         <scene sceneID="oMJ-Mz-YiR">
@@ -181,7 +170,7 @@
                                     <navigationItem title="2. Connect Tag" id="FCr-jS-r65">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="wic-lp-XO2">
                                             <connections>
-                                                <segue destination="oek-od-GeS" kind="modal" id="9Je-j7-Epn"/>
+                                                <segue destination="oek-od-GeS" kind="modal" identifier="" id="9Je-j7-Epn"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -226,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sru-F0-CRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="98"/>
+            <point key="canvasLocation" x="457" y="90"/>
         </scene>
         <!--SuccessViewController-->
         <scene sceneID="Thj-8j-acI">
@@ -237,10 +226,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="2" kind="modal" identifier="SegueToWalkthroughLanding" id="HIg-Sk-15D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsD-zI-Wps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="98"/>
+            <point key="canvasLocation" x="1025" y="90"/>
         </scene>
     </scenes>
     <resources>
@@ -255,6 +247,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="HIg-Sk-15D"/>
         <segue reference="Mgb-aU-tzt"/>
     </inferredMetricsTieBreakers>
 </document>
