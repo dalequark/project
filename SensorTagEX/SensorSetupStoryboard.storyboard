@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QB3-ef-S4K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QB3-ef-S4K">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -89,7 +89,7 @@
                                     <action selector="doneButtonTapped:" destination="QB3-ef-S4K" eventType="touchUpInside" id="Si5-7x-sNd"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a date..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Z0-2o9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a time..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Z0-2o9">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="Z1Z-XH-fuO"/>
                                 </constraints>
@@ -150,7 +150,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorSetupViewController.h"/>
             <relationships>
                 <relationship kind="action" name="dateButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="doneButtonTapped:" candidateClass="UIButton"/>
                 <relationship kind="action" name="selectADate:"/>
                 <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="intervalSegmentedControl" candidateClass="UISegmentedControl"/>
