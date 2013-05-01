@@ -44,7 +44,7 @@
 		<string>bluetooth-central</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard</string>
+	<string>SensorSetupStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

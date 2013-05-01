@@ -28,6 +28,13 @@
 		7FF609121654FC50004F4562 /* deviceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609101654FC50004F4562 /* deviceSelector.m */; };
 		7FF609171654FC5D004F4562 /* Sensors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609141654FC5D004F4562 /* Sensors.m */; };
 		7FF609181654FC5D004F4562 /* SensorTagApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */; };
+		D594DB7E1730F4900011FD7D /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB721730F4900011FD7D /* AbstractActionSheetPicker.m */; };
+		D594DB7F1730F4900011FD7D /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB741730F4900011FD7D /* ActionSheetCustomPicker.m */; };
+		D594DB801730F4900011FD7D /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB771730F4900011FD7D /* ActionSheetDatePicker.m */; };
+		D594DB811730F4900011FD7D /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB791730F4900011FD7D /* ActionSheetDistancePicker.m */; };
+		D594DB821730F4900011FD7D /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB7B1730F4900011FD7D /* ActionSheetStringPicker.m */; };
+		D594DB831730F4900011FD7D /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB7D1730F4900011FD7D /* DistancePickerView.m */; };
+		D594DB861730F9380011FD7D /* NSDate+TCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB851730F9380011FD7D /* NSDate+TCUtils.m */; };
 		D59F6C9917233ED100BC0EE4 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F6C8717233ED100BC0EE4 /* AFHTTPClient.m */; };
 		D59F6C9A17233ED100BC0EE4 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F6C8917233ED100BC0EE4 /* AFHTTPRequestOperation.m */; };
 		D59F6C9B17233ED100BC0EE4 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F6C8B17233ED100BC0EE4 /* AFImageRequestOperation.m */; };
@@ -41,6 +48,8 @@
 		D5AC55B21724E81D00F6647E /* WalkthroughLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */; };
 		D5AC55B41724E8DB00F6647E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */; };
 		D5AC55B61724E8E100F6647E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */; };
+		D5B7D3B21730E52600762CD7 /* SensorSetupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */; };
+		D5C10B281730D9E40053E426 /* SensorSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C10B271730D9E40053E426 /* SensorSetupViewController.m */; };
 		D5DE105F1724A85C00FD1598 /* 170px-Bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */; };
 		D5DE10601724A85C00FD1598 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10571724A85C00FD1598 /* Default-568h@2x.png */; };
 		D5DE10611724A85C00FD1598 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10581724A85C00FD1598 /* Default.png */; };
@@ -86,6 +95,21 @@
 		7FF609141654FC5D004F4562 /* Sensors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sensors.m; sourceTree = "<group>"; };
 		7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTagApplicationViewController.h; sourceTree = "<group>"; };
 		7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTagApplicationViewController.m; sourceTree = "<group>"; };
+		D594DB711730F4900011FD7D /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
+		D594DB721730F4900011FD7D /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
+		D594DB731730F4900011FD7D /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPicker.h; sourceTree = "<group>"; };
+		D594DB741730F4900011FD7D /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetCustomPicker.m; sourceTree = "<group>"; };
+		D594DB751730F4900011FD7D /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		D594DB761730F4900011FD7D /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetDatePicker.h; sourceTree = "<group>"; };
+		D594DB771730F4900011FD7D /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetDatePicker.m; sourceTree = "<group>"; };
+		D594DB781730F4900011FD7D /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetDistancePicker.h; sourceTree = "<group>"; };
+		D594DB791730F4900011FD7D /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetDistancePicker.m; sourceTree = "<group>"; };
+		D594DB7A1730F4900011FD7D /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetStringPicker.h; sourceTree = "<group>"; };
+		D594DB7B1730F4900011FD7D /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		D594DB7C1730F4900011FD7D /* DistancePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePickerView.h; sourceTree = "<group>"; };
+		D594DB7D1730F4900011FD7D /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
+		D594DB841730F9380011FD7D /* NSDate+TCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TCUtils.h"; sourceTree = "<group>"; };
+		D594DB851730F9380011FD7D /* NSDate+TCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TCUtils.m"; sourceTree = "<group>"; };
 		D59F6C8617233ED100BC0EE4 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		D59F6C8717233ED100BC0EE4 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		D59F6C8817233ED100BC0EE4 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -111,6 +135,9 @@
 		D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughLandingViewController.m; sourceTree = "<group>"; };
 		D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SensorSetupStoryboard.storyboard; sourceTree = "<group>"; };
+		D5C10B261730D9E40053E426 /* SensorSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorSetupViewController.h; sourceTree = "<group>"; };
+		D5C10B271730D9E40053E426 /* SensorSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorSetupViewController.m; sourceTree = "<group>"; };
 		D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "170px-Bluetooth.png"; sourceTree = "<group>"; };
 		D5DE10571724A85C00FD1598 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D5DE10581724A85C00FD1598 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -144,6 +171,7 @@
 		7FF608DB1654FBE1004F4562 = {
 			isa = PBXGroup;
 			children = (
+				D594DB701730F4900011FD7D /* ActionSheetPicker */,
 				D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */,
 				D5AC55B31724E8DB00F6647E /* MobileCoreServices.framework */,
 				D5AC55AB1724B5C500F6647E /* SensorTagEX-Info.plist */,
@@ -179,7 +207,12 @@
 		7FF608F01654FBE1004F4562 /* SensorTagEX */ = {
 			isa = PBXGroup;
 			children = (
+				D594DB841730F9380011FD7D /* NSDate+TCUtils.h */,
+				D594DB851730F9380011FD7D /* NSDate+TCUtils.m */,
+				D5C10B261730D9E40053E426 /* SensorSetupViewController.h */,
+				D5C10B271730D9E40053E426 /* SensorSetupViewController.m */,
 				D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */,
+				D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */,
 				D5AC55B01724E81C00F6647E /* WalkthroughLandingViewController.h */,
 				D5AC55B11724E81D00F6647E /* WalkthroughLandingViewController.m */,
 				7FA453051724ACB70074FE1E /* SuccessViewController.h */,
@@ -215,6 +248,27 @@
 				7FF609001654FBE1004F4562 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D594DB701730F4900011FD7D /* ActionSheetPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D594DB711730F4900011FD7D /* AbstractActionSheetPicker.h */,
+				D594DB721730F4900011FD7D /* AbstractActionSheetPicker.m */,
+				D594DB731730F4900011FD7D /* ActionSheetCustomPicker.h */,
+				D594DB741730F4900011FD7D /* ActionSheetCustomPicker.m */,
+				D594DB751730F4900011FD7D /* ActionSheetCustomPickerDelegate.h */,
+				D594DB761730F4900011FD7D /* ActionSheetDatePicker.h */,
+				D594DB771730F4900011FD7D /* ActionSheetDatePicker.m */,
+				D594DB781730F4900011FD7D /* ActionSheetDistancePicker.h */,
+				D594DB791730F4900011FD7D /* ActionSheetDistancePicker.m */,
+				D594DB7A1730F4900011FD7D /* ActionSheetStringPicker.h */,
+				D594DB7B1730F4900011FD7D /* ActionSheetStringPicker.m */,
+				D594DB7C1730F4900011FD7D /* DistancePickerView.h */,
+				D594DB7D1730F4900011FD7D /* DistancePickerView.m */,
+			);
+			name = ActionSheetPicker;
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		D59F6C8517233ED100BC0EE4 /* AFNetworking */ = {
@@ -331,6 +385,7 @@
 				D5DE10661724A85C00FD1598 /* med_cc2541dk-sensor_cc2541sensortag_3.jpg in Resources */,
 				D5DE10671724A85C00FD1598 /* SensorTag Pairing Button.jpg in Resources */,
 				D5AC55AD1724B5C500F6647E /* SensorTagEX-Info.plist in Resources */,
+				D5B7D3B21730E52600762CD7 /* SensorSetupStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +415,14 @@
 				D59F6CA117233ED100BC0EE4 /* UIImageView+AFNetworking.m in Sources */,
 				7FA453071724ACB70074FE1E /* SuccessViewController.m in Sources */,
 				D5AC55B21724E81D00F6647E /* WalkthroughLandingViewController.m in Sources */,
+				D5C10B281730D9E40053E426 /* SensorSetupViewController.m in Sources */,
+				D594DB7E1730F4900011FD7D /* AbstractActionSheetPicker.m in Sources */,
+				D594DB7F1730F4900011FD7D /* ActionSheetCustomPicker.m in Sources */,
+				D594DB801730F4900011FD7D /* ActionSheetDatePicker.m in Sources */,
+				D594DB811730F4900011FD7D /* ActionSheetDistancePicker.m in Sources */,
+				D594DB821730F4900011FD7D /* ActionSheetStringPicker.m in Sources */,
+				D594DB831730F4900011FD7D /* DistancePickerView.m in Sources */,
+				D594DB861730F9380011FD7D /* NSDate+TCUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
