@@ -22,6 +22,7 @@
 
 @interface SensorTagApplicationViewController : UITableViewController <CBCentralManagerDelegate,CBPeripheralDelegate,MFMailComposeViewControllerDelegate>
 
+@property (strong,nonatomic) UIActivityIndicatorView *spinner;
 @property (strong,nonatomic) BLEDevice *d;
 @property NSMutableArray *sensorsEnabled;
 

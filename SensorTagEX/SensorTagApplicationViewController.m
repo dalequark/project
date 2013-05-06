@@ -108,10 +108,11 @@
     // preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
-    // XXX put stuff in the top right nav bar
-    //UIBarButtonItem *mailer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(sendMail:)];
-    //[self.navigationItem setRightBarButtonItem:mailer];
-    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:[self spinner]];
+    [self.navigationItem setRightBarButtonItem:barButton];
+    [self.spinner startAnimating];
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -278,10 +279,12 @@
 #pragma mark - CBperipheral delegate functions
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    NSLog(@"..");
+    // BLE services discovered
     if ([service.UUID isEqual:[CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Gyroscope service UUID"]]]) {
         [self configureSensorTag];
     }
+    [self.spinner stopAnimating];
+    // TODO set up a button to edit the task
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
