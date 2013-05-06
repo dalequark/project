@@ -8,15 +8,14 @@
 
 #import "deviceSelector.h"
 #import "WalkthroughLandingViewController.h"
+#import "SensorSetupViewController.h"
 
 @interface deviceSelector ()
 
 @end
 
 @implementation deviceSelector
-@synthesize m,nDevices,sensorTags;
-
-
+@synthesize m,nDevices,sensorTags,sensorTagsTaskName;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    /* XXX
+    /* TODO
      here we should set up an initial view with a spinner
      and text telling the user that we are waiting to detect sensortags
      which should go away once at least one sensortag is added to the view
@@ -52,7 +51,6 @@
     [[self spinner] startAnimating];
     
 }
-
 
 - (void)backToWalkthrough
 {
@@ -91,41 +89,45 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* XXX
-     rather than adding every sensor that is paired immediately,
-     here we should make HTTP requests to get the associated
-     task for each paired sensor, using its UUID
-     
-     if we cannot identify an associated task, insert an alternate
-     row into the view that prompts us to set up a new task
+    /*
+     rather than adding every sensor that is paired immediately, make HTTP requests 
+     to get the associated task for each paired sensor, using its UUID. if we cannot
+     identify an associated task, insert a row that prompts us to set up a new task
      */
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[NSString stringWithFormat:@"%d_Cell",indexPath.row]];
     CBPeripheral *p = [self.sensorTags objectAtIndex:indexPath.row];
-
     
-    // TODO XXX retrieve sensor data from the server
+    // retrieve sensor data from the server
     NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
-    NSString *urlString = [NSString stringWithFormat:@"%@?action=info&uuid=%@", baseURL, CFUUIDCreateString(nil,p.UUID)];
-    
+    NSString *urlString = [NSString stringWithFormat:@"%@?action=info&uuid=%@",
+                           baseURL, CFUUIDCreateString(nil,p.UUID)];
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        if ([@"failure" isEqualToString:
-             [JSON valueForKeyPath:@"status"]]){
+    AFJSONRequestOperation *operation =
+    [AFJSONRequestOperation
+     JSONRequestOperationWithRequest:request
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
+            //Existing sensor
+            NSLog(@"Found an existing sensor: %@", [JSON valueForKeyPath:@"name"]);
+            NSString *name = [JSON valueForKeyPath:@"name"];
+            [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:name];
+            cell.textLabel.text = name;
+        } else {
             //New sensor
+            NSLog(@"Found a new sensor");
+            [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:NULL];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
             cell.highlighted = TRUE;
         }
-        else{
-            //Existing sensor
-            cell.textLabel.text = [JSON valueForKeyPath:@"name"];
-        }
-        
         NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
-    } failure:nil];
+     }
+     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+         NSLog(@"Server error %d: %@", [response statusCode], JSON == NULL ? [error userInfo] : JSON);
+     }];
  
     [operation start];
     
@@ -165,25 +167,39 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CBPeripheral *p = [self.sensorTags objectAtIndex:indexPath.row];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    // TODO: initialize the BLEDevice earlier, so that we connect as soon as the device is available
     BLEDevice *d = [[BLEDevice alloc]init];
-    
     d.p = p;
     d.manager = self.m;
     d.setupData = [self makeSensorTagConfiguration];
+    // END TODO
     
-    SensorTagApplicationViewController *vC = [[SensorTagApplicationViewController alloc]initWithStyle:UITableViewStyleGrouped andSensorTag:d];
-    [self.navigationController pushViewController:vC animated:YES];
-    
+    if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == NULL) {
+        // new sensor, take us to setup page
+        NSLog(@"Going to setup page");
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"SensorSetupStoryboard" bundle:nil];
+        UIViewController *vc = [sb instantiateInitialViewController];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:vc animated:YES completion:NULL];
+    } else {
+        // existing sensor
+        SensorTagApplicationViewController *sensorVC =
+            [[SensorTagApplicationViewController alloc]initWithStyle:UITableViewStyleGrouped andSensorTag:d];
+        [self.navigationController pushViewController:sensorVC animated:YES];
+    }
 }
 
 #pragma mark - CBCentralManager delegate
 
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (central.state != CBCentralManagerStatePoweredOn) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"BLE not supported !" message:[NSString stringWithFormat:@"CoreBluetooth return state: %d",central.state] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"BLE not supported !"
+                                  message:[NSString stringWithFormat:@"CoreBluetooth return state: %d",central.state]
+                                  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
     else {
@@ -217,10 +233,10 @@
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
     BOOL replace = NO;
     BOOL found = NO;
-    NSLog(@"Services scanned !");
+    //NSLog(@"Services scanned !");
     [self.m cancelPeripheralConnection:peripheral];
     for (CBService *s in peripheral.services) {
-        NSLog(@"Service found : %@",s.UUID);
+        //NSLog(@"Service found : %@",s.UUID);
         if ([s.UUID isEqual:[CBUUID UUIDWithString:@"f000aa00-0451-4000 b000-000000000000"]])  {
             // this is a SensorTag
             found = YES;

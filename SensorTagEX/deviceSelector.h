@@ -18,6 +18,7 @@
 @property (strong,nonatomic) CBCentralManager *m;
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *sensorTags;
+@property (strong,nonatomic) NSMutableArray *sensorTagsTaskName;
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 

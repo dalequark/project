@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BLEDevice.h"
 #import "AbstractActionSheetPicker.h"
 #import "ActionSheetDatePicker.h"
 
@@ -19,6 +20,7 @@
 
     @property (nonatomic) NSDate *selectedDate;
     @property (nonatomic, strong) AbstractActionSheetPicker *actionSheetPicker;
+    @property (nonatomic, strong) BLEDevice* setupDevice;
 
 - (IBAction)selectADate:(id)sender;
 - (IBAction)dateButtonTapped:(UIBarButtonItem *)sender;

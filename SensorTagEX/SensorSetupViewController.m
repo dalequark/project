@@ -9,6 +9,7 @@
 #import "SensorSetupViewController.h"
 #import "AbstractActionSheetPicker.h"
 #import "ActionSheetDatePicker.h"
+#import "deviceSelector.h"
 #import "NSDate+TCUtils.h"
 
 @interface SensorSetupViewController ()
@@ -17,6 +18,7 @@
 
 @implementation SensorSetupViewController
 
+@synthesize setupDevice = _setupDevice;
 @synthesize nameTextField = _nameTextField;
 @synthesize sensorSegmentedControl = _sensorSegmentedControl;
 @synthesize intervalSegmentedControl = _intervalSegmentedControl;
@@ -54,6 +56,11 @@
     NSLog(@"sensor: %d", self.sensorSegmentedControl.selectedSegmentIndex);
     NSLog(@"interval: %d", self.intervalSegmentedControl.selectedSegmentIndex);
     NSLog(@"time: %@", self.dateTextField.text);
+    
+    // TODO: initialize the BLEDevice earlier, so that we connect as soon as the device is available
+    SensorTagApplicationViewController *sensorVC =
+    [[SensorTagApplicationViewController alloc]initWithStyle:UITableViewStyleGrouped andSensorTag:self.setupDevice];
+    [self.navigationController pushViewController:sensorVC animated:YES];
 }
 
 - (IBAction)selectADate:(UIControl *)sender {
@@ -92,7 +99,7 @@
 {
     [super viewDidLoad];
     self.selectedDate = [NSDate date];
-    self.nameTextField.delegate = self;
+    self.nameTextField.delegate = (id<UITextFieldDelegate>)self;
 }
 
 - (void)didReceiveMemoryWarning

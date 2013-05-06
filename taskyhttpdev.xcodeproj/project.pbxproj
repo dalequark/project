@@ -28,6 +28,8 @@
 		7FF609121654FC50004F4562 /* deviceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609101654FC50004F4562 /* deviceSelector.m */; };
 		7FF609171654FC5D004F4562 /* Sensors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609141654FC5D004F4562 /* Sensors.m */; };
 		7FF609181654FC5D004F4562 /* SensorTagApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */; };
+		D55067BC173769FF00EDA4B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D55067BA173769FF00EDA4B9 /* Default@2x.png */; };
+		D55067BD173769FF00EDA4B9 /* Default.psd in Resources */ = {isa = PBXBuildFile; fileRef = D55067BB173769FF00EDA4B9 /* Default.psd */; };
 		D594DB7E1730F4900011FD7D /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB721730F4900011FD7D /* AbstractActionSheetPicker.m */; };
 		D594DB7F1730F4900011FD7D /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB741730F4900011FD7D /* ActionSheetCustomPicker.m */; };
 		D594DB801730F4900011FD7D /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D594DB771730F4900011FD7D /* ActionSheetDatePicker.m */; };
@@ -53,7 +55,6 @@
 		D5DE105F1724A85C00FD1598 /* 170px-Bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */; };
 		D5DE10601724A85C00FD1598 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10571724A85C00FD1598 /* Default-568h@2x.png */; };
 		D5DE10611724A85C00FD1598 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10581724A85C00FD1598 /* Default.png */; };
-		D5DE10621724A85C00FD1598 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10591724A85C00FD1598 /* Default@2x.png */; };
 		D5DE10631724A85C00FD1598 /* iphone-111-bt-bug-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE105A1724A85C00FD1598 /* iphone-111-bt-bug-1.png */; };
 		D5DE10641724A85C00FD1598 /* iphone-bluetooth-settings.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5DE105B1724A85C00FD1598 /* iphone-bluetooth-settings.gif */; };
 		D5DE10651724A85C00FD1598 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */; };
@@ -95,6 +96,8 @@
 		7FF609141654FC5D004F4562 /* Sensors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sensors.m; sourceTree = "<group>"; };
 		7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTagApplicationViewController.h; sourceTree = "<group>"; };
 		7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTagApplicationViewController.m; sourceTree = "<group>"; };
+		D55067BA173769FF00EDA4B9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D55067BB173769FF00EDA4B9 /* Default.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Default.psd; sourceTree = "<group>"; };
 		D594DB711730F4900011FD7D /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		D594DB721730F4900011FD7D /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		D594DB731730F4900011FD7D /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPicker.h; sourceTree = "<group>"; };
@@ -141,7 +144,6 @@
 		D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "170px-Bluetooth.png"; sourceTree = "<group>"; };
 		D5DE10571724A85C00FD1598 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D5DE10581724A85C00FD1598 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		D5DE10591724A85C00FD1598 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D5DE105A1724A85C00FD1598 /* iphone-111-bt-bug-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-111-bt-bug-1.png"; sourceTree = "<group>"; };
 		D5DE105B1724A85C00FD1598 /* iphone-bluetooth-settings.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "iphone-bluetooth-settings.gif"; sourceTree = "<group>"; };
 		D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ../MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -300,6 +302,8 @@
 		D5DE106A1724A91700FD1598 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D55067BA173769FF00EDA4B9 /* Default@2x.png */,
+				D55067BB173769FF00EDA4B9 /* Default.psd */,
 				7F6FC8C816D3AEDA00A5BAB9 /* _icon@2x_114.png */,
 				7F6FC8C616D3AEAD00A5BAB9 /* _icon@2x_144.png */,
 				7F6FC8C416D3AEA500A5BAB9 /* _icon_72.png */,
@@ -307,7 +311,6 @@
 				D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */,
 				D5DE10571724A85C00FD1598 /* Default-568h@2x.png */,
 				D5DE10581724A85C00FD1598 /* Default.png */,
-				D5DE10591724A85C00FD1598 /* Default@2x.png */,
 				D5DE105A1724A85C00FD1598 /* iphone-111-bt-bug-1.png */,
 				D5DE105B1724A85C00FD1598 /* iphone-bluetooth-settings.gif */,
 				D5DE105D1724A85C00FD1598 /* med_cc2541dk-sensor_cc2541sensortag_3.jpg */,
@@ -378,7 +381,6 @@
 				D5DE105F1724A85C00FD1598 /* 170px-Bluetooth.png in Resources */,
 				D5DE10601724A85C00FD1598 /* Default-568h@2x.png in Resources */,
 				D5DE10611724A85C00FD1598 /* Default.png in Resources */,
-				D5DE10621724A85C00FD1598 /* Default@2x.png in Resources */,
 				D5DE10631724A85C00FD1598 /* iphone-111-bt-bug-1.png in Resources */,
 				D5DE10641724A85C00FD1598 /* iphone-bluetooth-settings.gif in Resources */,
 				D5DE10651724A85C00FD1598 /* MainStoryboard.storyboard in Resources */,
@@ -386,6 +388,8 @@
 				D5DE10671724A85C00FD1598 /* SensorTag Pairing Button.jpg in Resources */,
 				D5AC55AD1724B5C500F6647E /* SensorTagEX-Info.plist in Resources */,
 				D5B7D3B21730E52600762CD7 /* SensorSetupStoryboard.storyboard in Resources */,
+				D55067BC173769FF00EDA4B9 /* Default@2x.png in Resources */,
+				D55067BD173769FF00EDA4B9 /* Default.psd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
