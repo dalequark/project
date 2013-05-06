@@ -49,7 +49,6 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:[self spinner]];
     [[self navigationItem] setRightBarButtonItem:barButton];
     [[self spinner] startAnimating];
-    
 }
 
 - (void)backToWalkthrough
@@ -70,7 +69,6 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     self.m.delegate = self;
-
 }
 
 #pragma mark - Table view data source
@@ -111,17 +109,16 @@
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
             //Existing sensor
-            NSLog(@"Found an existing sensor: %@", [JSON valueForKeyPath:@"name"]);
+            //NSLog(@"Found an existing sensor: %@", [JSON valueForKeyPath:@"name"]);
             NSString *name = [JSON valueForKeyPath:@"name"];
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:name];
             cell.textLabel.text = name;
         } else {
             //New sensor
-            NSLog(@"Found a new sensor");
+            //NSLog(@"Found a new sensor");
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:NULL];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
-            cell.highlighted = TRUE;
         }
         NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
      }
@@ -178,8 +175,6 @@
     
     if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == NULL) {
         // new sensor, take us to setup page
-        NSLog(@"Going to setup page");
-        
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"SensorSetupStoryboard" bundle:nil];
         UIViewController *vc = [sb instantiateInitialViewController];
         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -197,7 +192,7 @@
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (central.state != CBCentralManagerStatePoweredOn) {
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"BLE not supported !"
+                                  initWithTitle:@"BLE is not supported. Use an iPhone 4S, iPad 3, iPad Mini, or later device."
                                   message:[NSString stringWithFormat:@"CoreBluetooth return state: %d",central.state]
                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
@@ -209,7 +204,7 @@
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     
-    NSLog(@"Found a BLE Device : %@",peripheral);
+    //NSLog(@"Found a BLE Device : %@",peripheral);
     
     /* iOS 6.0 bug workaround : connect to device before displaying UUID !
        The reason for this is that the CFUUID .UUID property of CBPeripheral

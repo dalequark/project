@@ -7,6 +7,7 @@
 //
 
 #import "SensorSetupViewController.h"
+#import "WalkthroughLandingViewController.h"
 #import "AbstractActionSheetPicker.h"
 #import "ActionSheetDatePicker.h"
 #import "deviceSelector.h"
@@ -42,8 +43,8 @@
     NSInteger minute = [components minute];
 
     //may have originated from textField or barButtonItem, use an IBOutlet instead of element
-    self.dateTextField.text = [NSString stringWithFormat: @"%d:%d %@",
-                               hour % 12, minute, ((hour < 12) ? @"AM" : @"PM")];
+    self.dateTextField.text = [NSString stringWithFormat: @"%d:%02d %@",
+                               ((hour + 11) % 12) + 1, minute, ((hour < 12) ? @"AM" : @"PM")];
 }
 
 - (IBAction)dateButtonTapped:(UIBarButtonItem *)sender {
@@ -57,10 +58,22 @@
     NSLog(@"interval: %d", self.intervalSegmentedControl.selectedSegmentIndex);
     NSLog(@"time: %@", self.dateTextField.text);
     
+    /*
     // TODO: initialize the BLEDevice earlier, so that we connect as soon as the device is available
     SensorTagApplicationViewController *sensorVC =
-    [[SensorTagApplicationViewController alloc]initWithStyle:UITableViewStyleGrouped andSensorTag:self.setupDevice];
-    [self.navigationController pushViewController:sensorVC animated:YES];
+    [[SensorTagApplicationViewController alloc]
+     initWithStyle:UITableViewStyleGrouped andSensorTag:self.setupDevice];
+    //[self.navigationController pushViewController:sensorVC animated:YES];
+    [self presentViewController:sensorVC animated:YES completion:NULL];
+    */
+    
+	// set up the sensortag chooser
+    UIViewController *parent = [[WalkthroughLandingViewController alloc]init];
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:parent];
+    [rC pushViewController:dS animated:YES];
+    mainWindow.rootViewController = rC;
 }
 
 - (IBAction)selectADate:(UIControl *)sender {

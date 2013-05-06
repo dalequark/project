@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QB3-ef-S4K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QB3-ef-S4K">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -113,16 +113,16 @@
                             <constraint firstAttribute="bottom" secondItem="r2t-4Z-vJB" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="DAg-CM-6i9"/>
                             <constraint firstAttribute="bottom" secondItem="pbQ-NB-OrF" secondAttribute="bottom" constant="111" id="DKZ-Th-UWL"/>
                             <constraint firstItem="W43-ra-hAb" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="61" id="GUR-0F-7SX"/>
+                            <constraint firstItem="IIy-A8-pf0" firstAttribute="top" secondItem="SI3-pW-QHp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="MBG-sg-1kh"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="centerX" secondItem="r2t-4Z-vJB" secondAttribute="centerX" type="default" id="QwS-MV-boP"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" type="default" id="ReF-CY-vgP"/>
                             <constraint firstItem="SI3-pW-QHp" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="104" id="TOh-X6-Fth"/>
-                            <constraint firstItem="zSV-Z0-2o9" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="UUD-sp-Yfn"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="132" id="VwH-kz-kjn"/>
                             <constraint firstItem="SI3-pW-QHp" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yak-XZ-BbL"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" type="default" id="Zk2-cL-IWb"/>
                             <constraint firstItem="pbQ-NB-OrF" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="a2i-ah-BoC"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="trailing" secondItem="AaB-rv-ZLs" secondAttribute="trailing" type="default" id="eMR-Kh-YkX"/>
                             <constraint firstItem="IIy-A8-pf0" firstAttribute="trailing" secondItem="W43-ra-hAb" secondAttribute="trailing" type="default" id="fKZ-JA-Bq7"/>
+                            <constraint firstItem="IIy-A8-pf0" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="ler-Hs-cr0"/>
                             <constraint firstItem="UaV-V5-AUe" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="176" id="nSf-Th-yeN"/>
                             <constraint firstItem="UaV-V5-AUe" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ogb-dX-eNO"/>
                             <constraint firstAttribute="bottom" secondItem="jaw-6M-CND" secondAttribute="bottom" constant="189" id="vs5-je-Vu2"/>
@@ -142,22 +142,6 @@
             <point key="canvasLocation" x="613" y="-524"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SensorSetupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorSetupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dateButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectADate:"/>
-                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="intervalSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sensorSegmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
