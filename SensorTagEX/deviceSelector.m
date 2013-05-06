@@ -25,6 +25,7 @@
         self.m = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         self.nDevices = [[NSMutableArray alloc]init];
         self.sensorTags = [[NSMutableArray alloc]init];
+        self.sensorTagsTaskName = [[NSMutableArray alloc]init];
         self.title = @"Connecting...";
     }
     return self;
@@ -107,7 +108,7 @@
     [AFJSONRequestOperation
      JSONRequestOperationWithRequest:request
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
+        if (true || [@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
             //Existing sensor
             //NSLog(@"Found an existing sensor: %@", [JSON valueForKeyPath:@"name"]);
             NSString *name = [JSON valueForKeyPath:@"name"];
@@ -116,7 +117,7 @@
         } else {
             //New sensor
             //NSLog(@"Found a new sensor");
-            [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:NULL];
+            [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
         }
@@ -173,7 +174,8 @@
     d.setupData = [self makeSensorTagConfiguration];
     // END TODO
     
-    if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == NULL) {
+    NSLog(@">>>> %@", [self.sensorTagsTaskName objectAtIndex:indexPath.row]);
+    if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == [NSNull null]) {
         // new sensor, take us to setup page
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"SensorSetupStoryboard" bundle:nil];
         UIViewController *vc = [sb instantiateInitialViewController];
@@ -243,22 +245,24 @@
             CBPeripheral *p = [self.sensorTags objectAtIndex:ii];
             if ([p isEqual:peripheral]) {
                     [self.sensorTags replaceObjectAtIndex:ii withObject:peripheral];
+                    [self.sensorTagsTaskName replaceObjectAtIndex:ii withObject:[NSNull null]];
                     replace = YES;
                 }
             }
         if (!replace) {
             [self.sensorTags addObject:peripheral];
+            [self.sensorTagsTaskName addObject:[NSNull null]];
             [self.tableView reloadData];
         }
     }
 }
 
 -(void) peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"didUpdateNotificationStateForCharacteristic %@ error = %@",characteristic,error);
+    //NSLog(@"didUpdateNotificationStateForCharacteristic %@ error = %@",characteristic,error);
 }
 
 -(void) peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"didWriteValueForCharacteristic %@ error = %@",characteristic,error);
+    //NSLog(@"didWriteValueForCharacteristic %@ error = %@",characteristic,error);
 }
 
 
