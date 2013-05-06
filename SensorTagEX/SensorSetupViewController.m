@@ -53,19 +53,51 @@
 
 - (IBAction)doneButtonTapped:(UIButton *)sender {
     // TODO: check self.nameTextField.text and self.dateTextField.text for validity
-    NSLog(@"name: %@", self.nameTextField.text);
-    NSLog(@"sensor: %d", self.sensorSegmentedControl.selectedSegmentIndex);
-    NSLog(@"interval: %d", self.intervalSegmentedControl.selectedSegmentIndex);
-    NSLog(@"time: %@", self.dateTextField.text);
     
-    /*
-    // TODO: initialize the BLEDevice earlier, so that we connect as soon as the device is available
-    SensorTagApplicationViewController *sensorVC =
-    [[SensorTagApplicationViewController alloc]
-     initWithStyle:UITableViewStyleGrouped andSensorTag:self.setupDevice];
-    //[self.navigationController pushViewController:sensorVC animated:YES];
-    [self presentViewController:sensorVC animated:YES completion:NULL];
-    */
+    NSString *sensor;
+    if (self.sensorSegmentedControl.selectedSegmentIndex == 0) {
+        sensor = @"accel";
+    } else if (self.sensorSegmentedControl.selectedSegmentIndex == 1) {
+        sensor = @"gyro";
+    } else if (self.sensorSegmentedControl.selectedSegmentIndex == 2) {
+        sensor = @"magneto";
+    } else {
+        sensor = @"unknown";
+    }
+    
+    NSString *phone = @"15102702170"; // TODO
+    
+    NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
+    NSString *urlString =
+    [NSString stringWithFormat:@"%@?action=connect&uuid=%@&task=%@&phone=%@&interval=%@&time=%@&sensor=%@",
+     baseURL,
+     CFUUIDCreateString(nil,self.setupDevice.p.UUID),
+     [self.nameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"],
+     phone, // TODO format phone
+     @"1", // TODO pass the actual interval (self.intervalSegmentedControl.selectedSegmentIndex)
+     @"1", //self.dateTextField.text, // TODO format reminder time as secs from start of day
+     sensor];
+    NSLog(@"%@", urlString);
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation =
+    [AFJSONRequestOperation
+     JSONRequestOperationWithRequest:request
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+         if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
+             // TODO respond to success
+         } else {
+             // TODO respond to failure
+         }
+         NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
+     }
+     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+         // TODO respond to failure
+         NSLog(@"Server error %d: %@", [response statusCode], JSON == NULL ? [error userInfo] : JSON);
+     }];
+    [operation start];
     
 	// set up the sensortag chooser
     UIViewController *parent = [[WalkthroughLandingViewController alloc]init];

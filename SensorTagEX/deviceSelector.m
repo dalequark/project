@@ -46,10 +46,10 @@
     [[self navigationItem] setLeftBarButtonItem:mailer];
     
     // set up a spinner waiting for sensor tags to connect
-    self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:[self spinner]];
-    [[self navigationItem] setRightBarButtonItem:barButton];
-    [[self spinner] startAnimating];
+    [self.navigationItem setRightBarButtonItem:barButton];
+    [self.spinner startAnimating];
 }
 
 - (void)backToWalkthrough
@@ -104,29 +104,36 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    cell.accessoryView = spinner;
+    spinner.frame = CGRectMake(145, 0, 30, 30);
+    [spinner startAnimating];
+    
     AFJSONRequestOperation *operation =
     [AFJSONRequestOperation
      JSONRequestOperationWithRequest:request
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        if (true || [@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
+        if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
             //Existing sensor
-            //NSLog(@"Found an existing sensor: %@", [JSON valueForKeyPath:@"name"]);
-            NSString *name = [JSON valueForKeyPath:@"name"];
+            NSString *name = [JSON valueForKeyPath:@"task"];
+            NSLog(@"Found an existing sensor: %@", name);
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:name];
             cell.textLabel.text = name;
         } else {
             //New sensor
-            //NSLog(@"Found a new sensor");
+            NSLog(@"Found a new sensor");
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
         }
         NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
+        [spinner stopAnimating];
+        [cell setNeedsLayout];
      }
      failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
          NSLog(@"Server error %d: %@", [response statusCode], JSON == NULL ? [error userInfo] : JSON);
      }];
- 
     [operation start];
     
 /*
@@ -179,6 +186,7 @@
         // new sensor, take us to setup page
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"SensorSetupStoryboard" bundle:nil];
         UIViewController *vc = [sb instantiateInitialViewController];
+        ((SensorSetupViewController*)vc).setupDevice = d;
         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:vc animated:YES completion:NULL];
     } else {
@@ -206,7 +214,7 @@
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     
-    //NSLog(@"Found a BLE Device : %@",peripheral);
+    NSLog(@"Found a BLE Device : %@",peripheral);
     
     /* iOS 6.0 bug workaround : connect to device before displaying UUID !
        The reason for this is that the CFUUID .UUID property of CBPeripheral
@@ -230,10 +238,10 @@
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
     BOOL replace = NO;
     BOOL found = NO;
-    //NSLog(@"Services scanned !");
+    NSLog(@"Services scanned !");
     [self.m cancelPeripheralConnection:peripheral];
     for (CBService *s in peripheral.services) {
-        //NSLog(@"Service found : %@",s.UUID);
+        NSLog(@"Service found : %@",s.UUID);
         if ([s.UUID isEqual:[CBUUID UUIDWithString:@"f000aa00-0451-4000 b000-000000000000"]])  {
             // this is a SensorTag
             found = YES;
@@ -258,11 +266,11 @@
 }
 
 -(void) peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    //NSLog(@"didUpdateNotificationStateForCharacteristic %@ error = %@",characteristic,error);
+    NSLog(@"didUpdateNotificationStateForCharacteristic %@ error = %@",characteristic,error);
 }
 
 -(void) peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    //NSLog(@"didWriteValueForCharacteristic %@ error = %@",characteristic,error);
+    NSLog(@"didWriteValueForCharacteristic %@ error = %@",characteristic,error);
 }
 
 

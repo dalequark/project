@@ -17,8 +17,8 @@
 #define MIN_ALPHA_FADE 0.2f
 #define ALPHA_FADE_STEP 0.05f
 
-#define ACCELCHANGECUTTOFF 0.4f
-#define GYROCHANGECUTOFF 0.4f
+#define ACCELCHANGECUTTOFF 0.8f
+#define GYROCHANGECUTOFF 60.0f
 
 @interface SensorTagApplicationViewController : UITableViewController <CBCentralManagerDelegate,CBPeripheralDelegate,MFMailComposeViewControllerDelegate>
 
