@@ -34,40 +34,37 @@
         self.d = andSensorTag;
         
         if (!self.acc) {
-            self.acc = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Accelerometer"];
-            self.acc.accLabel.text = @"Accelerometer";
-            self.acc.accValueX.text = @"-";
-            self.acc.accValueY.text = @"-";
-            self.acc.accValueZ.text = @"-";
-            self.acc.accCalibrateButton.hidden = @"YES";
+            self.acc = [[accelerometerCellTemplate alloc]
+                        initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Accelerometer"];
+            self.acc.textLabel.text = @"Detect task using sensor motion";
+            self.acc.detailTextLabel.text = @"Accelerometer data will be sent to server";
         }
+        
+        if (!self.gyro) {
+            self.gyro = [[accelerometerCellTemplate alloc]
+                         initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Gyroscope"];
+            self.gyro.textLabel.text = @"Detect task using sensor rotation";
+            self.gyro.detailTextLabel.text = @"Gyroscope data will be sent to server";
+            
+            //[self.gyro.accCalibrateButton addTarget:self action:@selector(handleCalibrateGyro) forControlEvents:UIControlEventTouchUpInside];
+            self.gyroSensor = [[sensorIMU3000 alloc] init];
+        }
+        
         if (!self.mag) {
-            self.mag = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Magnetometer"];
-            self.mag.accLabel.text = @"Magnetometer";
-            self.mag.accIcon.image = [UIImage imageNamed:@"magnetometer.png"];
-            self.mag.accValueX.text = @"-";
-            self.mag.accValueY.text = @"-";
-            self.mag.accValueZ.text = @"-";
-            [self.mag.accCalibrateButton addTarget:self action:@selector(handleCalibrateMag) forControlEvents:UIControlEventTouchUpInside];
+            self.mag = [[accelerometerCellTemplate alloc]
+                        initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Magnetometer"];
+            self.mag.textLabel.text = @"Detect task using magnet motion";
+            self.mag.detailTextLabel.text = @"Magnetometer data will be sent to server";
+
+            //[self.mag.accCalibrateButton addTarget:self action:@selector(handleCalibrateMag) forControlEvents:UIControlEventTouchUpInside];
             self.magSensor = [[sensorMAG3110 alloc] init];
         }
-        if (!self.gyro) {
-            self.gyro = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Gyroscope"];
-            self.gyro.accLabel.text = @"Gyroscope";
-            self.gyro.accIcon.image = [UIImage imageNamed:@"gyroscope.png"];
-            self.gyro.accValueX.text = @"-";
-            self.gyro.accValueY.text = @"-";
-            self.gyro.accValueZ.text = @"-";
-            [self.gyro.accCalibrateButton addTarget:self action:@selector(handleCalibrateGyro) forControlEvents:UIControlEventTouchUpInside];
-            self.gyroSensor = [[sensorIMU3000 alloc] init];
-            
-        }
+
     }
     self.currentVal = [[sensorTagValues alloc]init];
     self.vals = [[NSMutableArray alloc]init];
     
     self.logInterval = 1.0; //1000 ms
-    
     self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
     
     return self;
@@ -110,90 +107,76 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section, plus a header (stats) and footer (histogram)
-    if (section == 0) return self.sensorsEnabled.count+2;
-    else return 1;
+    if (section == 0) {
+        return 3;
+    } else {
+        return 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
-        return 200;
-    }
-    
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return 50;
-        
-    } else if (indexPath.row == self.sensorsEnabled.count+1) {
-        return 50;
-        
     } else {
-        NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row-1];
-        if ([cellType isEqualToString:@"Accelerometer"]) return self.acc.height;
-        if ([cellType isEqualToString:@"Magnetometer"]) return self.mag.height;
-        if ([cellType isEqualToString:@"Gyroscope"]) return self.gyro.height;
-        else return 0;
+        return 200;
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Sensor Configuration";
-    } else if (section == 1) {
-        return @"Task History";
+        return @"Task Configuration";
     } else {
-        return nil;
+        return @"Task History";
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
+            cell.textLabel.text = @"Remind me after 7 days";
+            cell.detailTextLabel.text = @"via push notification around 10pm";
+            return cell;
+            
+        } else if (indexPath.row == 1) {
+            if ([self.taskSensorName isEqualToString:@"accel"]) {
+                return self.acc;
+            } else if ([self.taskSensorName isEqualToString:@"gyro"]) {
+                return self.gyro;
+            } else if ([self.taskSensorName isEqualToString:@"magneto"]) {
+                return self.mag;
+            } else {
+                return self.acc;
+            }
+            
+        } else {
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"status"];
+            if ([self.taskSensorName isEqualToString:@"magneto"]) {
+                cell.imageView.image = [UIImage imageNamed:@"magnetometer.png"];
+            } else {
+                cell.imageView.image = [UIImage imageNamed:@"gyroscope.png"];
+            }
+            return cell;
+        }
+    } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
         cell.textLabel.text = @"You've never done this task!";
         cell.detailTextLabel.text = @"never ever really";
         return cell;
     }
-    
-    if (indexPath.row == 0) {
-        // header
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
-        cell.textLabel.text = @"Remind me after 7 days";
-        cell.detailTextLabel.text = @"via push notification around 10pm";
-        return cell;
-
-    } else if ( indexPath.row == self.sensorsEnabled.count+1) {
-        // footer
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
-        return cell;
-        
-    } else {
-        NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row-1];
-        if ([cellType isEqualToString:@"Accelerometer"]) {
-            return self.acc;
-        }
-        else if ([cellType isEqualToString:@"Gyroscope"]) {
-            return self.gyro;
-        }
-        else if ([cellType isEqualToString:@"Magnetometer"]) {
-            return self.mag;
-        }
-    }
-    
-    // Something has gone wrong, because we should never get here, return empty cell
-    return [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Unknown Cell"];
 }
 
 #pragma mark - Table view delegate
@@ -247,9 +230,9 @@
     // create the button to delete this task
     [self.spinner stopAnimating];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc ]
-                                   initWithTitle:@"Delete"
+                                   initWithTitle:@"Reset"
                                    style:UIBarButtonItemStyleBordered
-                                   target:self action:@selector(deleteTask)];
+                                   target:self action:@selector(confirmDeleteTask)];
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
@@ -304,6 +287,26 @@
     [peripheral discoverServices:nil];
 }
 
+- (void)confirmDeleteTask
+{
+    UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:@"Reset Sensor"];
+	[alert setMessage:@"Do you want to delete this task?"];
+	[alert setDelegate:self];
+	[alert addButtonWithTitle:@"Yes"];
+	[alert addButtonWithTitle:@"No"];
+	[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0) {
+		[self deleteTask];
+	} else if (buttonIndex == 1) {
+		// don't delete the task
+	}
+}
+
 - (void)deleteTask
 {
     // send request to our server with data
@@ -326,6 +329,7 @@
         UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
         deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
         UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:parent];
+        [dS.m scanForPeripheralsWithServices:nil options:nil];
         [rC pushViewController:dS animated:YES];
         mainWindow.rootViewController = rC;
         
@@ -364,24 +368,12 @@
         float x = [sensorKXTJ9 calcXValue:characteristic.value];
         float y = [sensorKXTJ9 calcYValue:characteristic.value];
         float z = [sensorKXTJ9 calcZValue:characteristic.value];
-        
-        self.acc.accValueX.text = [NSString stringWithFormat:@"X: % 0.1fG",x];
-        self.acc.accValueY.text = [NSString stringWithFormat:@"Y: % 0.1fG",y];
-        self.acc.accValueZ.text = [NSString stringWithFormat:@"Z: % 0.1fG",z];
-        
-        self.acc.accValueX.textColor = [UIColor blackColor];
-        self.acc.accValueY.textColor = [UIColor blackColor];
-        self.acc.accValueZ.textColor = [UIColor blackColor];
-        
-        self.acc.accGraphX.progress = (x / [sensorKXTJ9 getRange]) + 0.5;
-        self.acc.accGraphY.progress = (y / [sensorKXTJ9 getRange]) + 0.5;
-        self.acc.accGraphZ.progress = (z / [sensorKXTJ9 getRange]) + 0.5;
-        
+                
         self.currentVal.accX = x;
         self.currentVal.accY = y;
         self.currentVal.accZ = z;
         
-        
+
         // detect significant amount of movement
         float accdx = (x-oldValX);
         float accdy = (y-oldValY);
@@ -410,18 +402,6 @@
         float y = [self.magSensor calcYValue:characteristic.value];
         float z = [self.magSensor calcZValue:characteristic.value];
         
-        self.mag.accValueX.text = [NSString stringWithFormat:@"X: % 0.1fuT",x];
-        self.mag.accValueY.text = [NSString stringWithFormat:@"Y: % 0.1fuT",y];
-        self.mag.accValueZ.text = [NSString stringWithFormat:@"Z: % 0.1fuT",z];
-        
-        self.mag.accValueX.textColor = [UIColor blackColor];
-        self.mag.accValueY.textColor = [UIColor blackColor];
-        self.mag.accValueZ.textColor = [UIColor blackColor];
-        
-        self.mag.accGraphX.progress = (x / [sensorMAG3110 getRange]) + 0.5;
-        self.mag.accGraphY.progress = (y / [sensorMAG3110 getRange]) + 0.5;
-        self.mag.accGraphZ.progress = (z / [sensorMAG3110 getRange]) + 0.5;
-        
         self.currentVal.magX = x;
         self.currentVal.magY = y;
         self.currentVal.magZ = z;
@@ -437,18 +417,6 @@
         float x = [self.gyroSensor calcXValue:characteristic.value];
         float y = [self.gyroSensor calcYValue:characteristic.value];
         float z = [self.gyroSensor calcZValue:characteristic.value];
-        
-        self.gyro.accValueX.text = [NSString stringWithFormat:@"X: % 0.1f°/S",x];
-        self.gyro.accValueY.text = [NSString stringWithFormat:@"Y: % 0.1f°/S",y];
-        self.gyro.accValueZ.text = [NSString stringWithFormat:@"Z: % 0.1f°/S",z];
-        
-        self.gyro.accValueX.textColor = [UIColor blackColor];
-        self.gyro.accValueY.textColor = [UIColor blackColor];
-        self.gyro.accValueZ.textColor = [UIColor blackColor];
-        
-        self.gyro.accGraphX.progress = (x / [sensorIMU3000 getRange]) + 0.5;
-        self.gyro.accGraphY.progress = (y / [sensorIMU3000 getRange]) + 0.5;
-        self.gyro.accGraphZ.progress = (z / [sensorIMU3000 getRange]) + 0.5;
         
         self.currentVal.gyroX = x;
         self.currentVal.gyroY = y;

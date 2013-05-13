@@ -147,7 +147,7 @@
     if (section == 0) {
         if (self.sensorTags.count >= 1) {
             [[self spinner] stopAnimating];
-            return @"Tap on a task to configure the associated sensor.";
+            return @"Select a task above to configure the associated sensor.";
         } else {
             return @"Searching for sensors...";
         }
@@ -188,19 +188,17 @@
                                                  target:nil action:nil];
         sensorVC.title = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
         sensorVC.taskIntervalLen = [self.sensorTagsTaskInterval objectAtIndex:indexPath.row];
+        sensorVC.taskSensorName = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
+        NSLog(@"%@", sensorVC.taskSensorName);
         if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"accel"]){
             sensorVC.acc.hidden = @"YES";
-            sensorVC.acc.height = 0;
         }
         if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"magneto"]){
             sensorVC.mag.hidden = @"YES";
-            sensorVC.mag.height = 0;
         }
         if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"gyro"]){
             sensorVC.gyro.hidden = @"YES";
-            sensorVC.gyro.height = 0;
         }
-
         [self.navigationController pushViewController:sensorVC animated:YES];
     }
 }
@@ -312,8 +310,6 @@
     [d setValue:@"f000aa50-0451-4000 b000-000000000000" forKey:@"Gyroscope service UUID"];
     [d setValue:@"f000aa51-0451-4000 b000-000000000000" forKey:@"Gyroscope data UUID"];
     [d setValue:@"f000aa52-0451-4000 b000-000000000000" forKey:@"Gyroscope config UUID"];
-
-    NSLog(@"%@",d);
     
     return d;
 }

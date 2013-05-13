@@ -82,31 +82,7 @@
 @end
 
 @interface accelerometerCellTemplate : UITableViewCell {
-    UILabel *accLabel;
-    UIImageView *accIcon;
-    UILabel *accValueX;
-    UILabel *accValueY;
-    UILabel *accValueZ;
-    UIProgressView *accGraphX;
-    UIProgressView *accGraphY;
-    UIProgressView *accGraphZ;
-    UIView *accGraphHolder;
-    UIButton *accCalibrateButton;
-    int height;
-    
 }
-
-@property (nonatomic,retain) UILabel *accLabel;
-@property (nonatomic,retain) UIImageView *accIcon;
-@property (nonatomic,retain) UILabel *accValueX;
-@property (nonatomic,retain) UILabel *accValueY;
-@property (nonatomic,retain) UILabel *accValueZ;
-@property (nonatomic,retain) UIProgressView *accGraphX;
-@property (nonatomic,retain) UIProgressView *accGraphY;
-@property (nonatomic,retain) UIProgressView *accGraphZ;
-@property (nonatomic,retain) UIView *accGraphHolder;
-@property (nonatomic,retain) UIButton *accCalibrateButton;
-@property int height;
 
 @end
 
