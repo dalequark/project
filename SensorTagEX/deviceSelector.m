@@ -16,7 +16,7 @@
 
 @implementation deviceSelector
 @synthesize m, nDevices, sensorTags;
-@synthesize sensorTagsTaskName, sensorTagsTaskSensor, sensorTagsTaskInterval;
+@synthesize sensorTagsTaskName, sensorTagsTaskSensor, sensorTagsTaskInterval, sensorTagsReminderTime;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,6 +29,7 @@
         self.sensorTagsTaskName = [[NSMutableArray alloc]init];
         self.sensorTagsTaskSensor = [[NSMutableArray alloc]init];
         self.sensorTagsTaskInterval = [[NSMutableArray alloc]init];
+        self.sensorTagsReminderTime = [[NSMutableArray alloc]init];
         self.title = @"Tracked Tasks";
     }
     return self;
@@ -116,10 +117,13 @@
             NSString *name = [JSON valueForKeyPath:@"task"];
             NSString *sensor = [JSON valueForKeyPath:@"sensor"];
             NSString *interval = [JSON valueForKeyPath:@"interval"];
+            NSString *time = @"7pm"; //[JSON valueForKeyPath:@"interval"]; // TODO XXX
+            
             NSLog(@"Found an existing sensor: %@ (%@)", name, sensor);
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:name];
             [self.sensorTagsTaskSensor replaceObjectAtIndex:indexPath.row withObject:sensor];
             [self.sensorTagsTaskInterval replaceObjectAtIndex:indexPath.row withObject:interval];
+            [self.sensorTagsReminderTime replaceObjectAtIndex:indexPath.row withObject:time];
             cell.textLabel.text = name;
         } else {
             // New sensor
@@ -127,6 +131,7 @@
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             [self.sensorTagsTaskSensor replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             [self.sensorTagsTaskInterval replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
+            [self.sensorTagsReminderTime replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
         }
@@ -167,7 +172,6 @@
     d.manager = self.m;
     d.setupData = [self makeSensorTagConfiguration];
     
-    NSLog(@">>>> %@", [self.sensorTagsTaskName objectAtIndex:indexPath.row]);
     if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == [NSNull null]) {
         
         // new sensor, take us to setup page
@@ -187,9 +191,10 @@
                                                  style:UIBarButtonItemStyleBordered
                                                  target:nil action:nil];
         sensorVC.title = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
+        sensorVC.taskSensorName = [self.sensorTagsTaskSensor objectAtIndex:indexPath.row];
         sensorVC.taskIntervalLen = [self.sensorTagsTaskInterval objectAtIndex:indexPath.row];
-        sensorVC.taskSensorName = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
-        NSLog(@"%@", sensorVC.taskSensorName);
+        sensorVC.taskReminderTime = [self.sensorTagsReminderTime objectAtIndex:indexPath.row];
+
         if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"accel"]){
             sensorVC.acc.hidden = @"YES";
         }
@@ -262,6 +267,7 @@
                     [self.sensorTagsTaskName replaceObjectAtIndex:ii withObject:[NSNull null]];
                     [self.sensorTagsTaskSensor replaceObjectAtIndex:ii withObject:[NSNull null]];
                     [self.sensorTagsTaskInterval replaceObjectAtIndex:ii withObject:[NSNull null]];
+                    [self.sensorTagsReminderTime replaceObjectAtIndex:ii withObject:[NSNull null]];
                     replace = YES;
                 }
             }
@@ -270,6 +276,7 @@
             [self.sensorTagsTaskName addObject:[NSNull null]];
             [self.sensorTagsTaskSensor addObject:[NSNull null]];
             [self.sensorTagsTaskInterval addObject:[NSNull null]];
+            [self.sensorTagsReminderTime addObject:[NSNull null]];
             [self.tableView reloadData];
         }
     }

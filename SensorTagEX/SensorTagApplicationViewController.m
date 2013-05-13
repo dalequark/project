@@ -9,14 +9,15 @@
 #import "SensorTagApplicationViewController.h"
 #import "WalkthroughLandingViewController.h"
 #import "deviceSelector.h"
+#import <UIKit/UIKit.h>
 
 @interface SensorTagApplicationViewController ()
 @end
 
 @implementation SensorTagApplicationViewController
 
-@synthesize d;
-@synthesize sensorsEnabled, taskSensorName, taskIntervalLen;
+@synthesize d, status, display, history;
+@synthesize sensorsEnabled, taskSensorName, taskIntervalLen, taskReminderTime;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +34,34 @@
     if (self) {
         self.d = andSensorTag;
         
+        if (!self.display) {
+            self.display = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
+            self.display.textLabel.text = [NSString
+                                   stringWithFormat:@"Maximum %@ days between tasks",
+                                   self.taskIntervalLen];
+            self.display.detailTextLabel.text = [NSString
+                                         stringWithFormat:@"Remind me around %@ if I've forgotten",
+                                         self.taskReminderTime];
+        }
+        
+        if (!self.history) {
+            CGRect frame = CGRectMake(12, 0, 296, 300);
+            self.history = [[UITableViewCell alloc] init];
+            self.history.backgroundView = [[UIView alloc] initWithFrame: frame];
+            
+            UIWebView* webView = [[UIWebView alloc] initWithFrame: frame];
+            webView.tag = 1001;
+            //webView.userInteractionEnabled = NO;
+            webView.opaque = YES;
+            webView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            [self.history addSubview:webView];
+            
+            NSURL *url = [NSURL URLWithString:@"http://cstedman.mycpanel.princeton.edu/hci/"];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            [webView setScalesPageToFit:YES];
+            [webView loadRequest:request];
+        }
+    
         if (!self.acc) {
             self.acc = [[accelerometerCellTemplate alloc]
                         initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Accelerometer"];
@@ -127,9 +156,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 50;
+        return 56;
     } else {
-        return 200;
+        return 300;
     }
 }
 
@@ -146,11 +175,7 @@
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {
-            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
-            cell.textLabel.text = @"Remind me after 7 days";
-            cell.detailTextLabel.text = @"via push notification around 10pm";
-            return cell;
-            
+            return self.display;
         } else if (indexPath.row == 1) {
             if ([self.taskSensorName isEqualToString:@"accel"]) {
                 return self.acc;
@@ -163,19 +188,28 @@
             }
             
         } else {
-            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"status"];
+            self.status = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"status"];
             if ([self.taskSensorName isEqualToString:@"magneto"]) {
-                cell.imageView.image = [UIImage imageNamed:@"magnetometer.png"];
+                self.status.imageView.image = [UIImage imageNamed:@"magnetometer.png"];
             } else {
-                cell.imageView.image = [UIImage imageNamed:@"gyroscope.png"];
+                self.status.imageView.image = [UIImage imageNamed:@"gyroscope.png"];
             }
-            return cell;
+            
+            self.status.textLabel.opaque = NO;
+            [self.status setSelectionStyle:UITableViewCellSelectionStyleGray];
+            if (self.triggered == YES || self.resetting == YES) {
+                self.status.textLabel.textColor = [UIColor colorWithRed:20/255.0f green:80/255.0f blue:32/255.0f alpha:1.0f];
+                self.status.textLabel.text = @"Sensor activity detected!";
+                [self.status setHighlighted:YES animated:NO];
+            } else {
+                self.status.textLabel.textColor = [UIColor blackColor];
+                self.status.textLabel.text = @"No sensor activity detected";
+                [self.status setHighlighted:NO animated:YES];
+            }
+            return self.status;
         }
     } else {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
-        cell.textLabel.text = @"You've never done this task!";
-        cell.detailTextLabel.text = @"never ever really";
-        return cell;
+        return self.history;
     }
 }
 
@@ -380,8 +414,7 @@
         float accdz = (z-oldValZ);
         float movementVector = accdx*accdx + accdy*accdy + accdz*accdz;
         
-        if (movementVector > ACCELCHANGECUTTOFF)
-        {
+        if (movementVector > ACCELCHANGECUTTOFF) {
             // send request to our server with data
             NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
             NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
@@ -392,6 +425,9 @@
                 NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
             } failure:nil];
             
+            if ([self.taskSensorName isEqualToString:@"accel"]) {
+                self.triggered = YES;
+            }
             [operation start];
         }
     }
@@ -428,13 +464,7 @@
         float dz = (z-oldValZ);
         float movementVector2 = dx*dx + dy*dy + dz*dz;
         
-        /*
-         NSString* stringToEmail = [NSString stringWithFormat: @"Gyro Data: X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG \n", x, y, z];
-         NSLog(stringToEmail);
-         */
-        
-        if (movementVector2 > GYROCHANGECUTOFF)
-        {
+        if (movementVector2 > GYROCHANGECUTOFF) {
             // send request to our server with data
             NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
             NSString *urlString = [NSString stringWithFormat:@"%@?action=gyro&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
@@ -445,6 +475,9 @@
                 NSLog(@"%@: %@", [JSON valueForKeyPath:@"message"], [JSON valueForKeyPath:@"origin"]);
             } failure:nil];
             
+            if ([self.taskSensorName isEqualToString:@"gyro"]) {
+                self.triggered = YES;
+            }
             [operation start];
         }
     }
@@ -483,6 +516,8 @@
     
     [self.vals addObject:newVal];
     
+    self.resetting = self.triggered;
+    self.triggered = NO;
 }
 
 @end

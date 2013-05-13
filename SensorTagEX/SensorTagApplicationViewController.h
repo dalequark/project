@@ -26,19 +26,24 @@
 @property (strong, nonatomic) BLEDevice *d;
 @property NSMutableArray *sensorsEnabled;
 
-@property (strong, nonatomic) accelerometerCellTemplate *display;
+@property (strong, nonatomic) UITableViewCell *display;
+@property (strong, nonatomic) UITableViewCell *status;
+@property (strong, nonatomic) UITableViewCell *history;
 @property (strong, nonatomic) accelerometerCellTemplate *acc;
 @property (strong, nonatomic) accelerometerCellTemplate *mag;
-@property (strong, nonatomic) sensorMAG3110 *magSensor;
 @property (strong, nonatomic) accelerometerCellTemplate *gyro;
+@property (strong, nonatomic) sensorMAG3110 *magSensor;
 @property (strong, nonatomic) sensorIMU3000 *gyroSensor;
 
 @property (strong, nonatomic) NSString *taskSensorName;
 @property (strong, nonatomic) NSString *taskIntervalLen;
+@property (strong, nonatomic) NSString *taskReminderTime;
 
 @property (strong, nonatomic) sensorTagValues *currentVal;
 @property (strong, nonatomic) NSMutableArray *vals;
 @property (strong, nonatomic) NSTimer *logTimer;
+@property (nonatomic) NSInteger triggered;
+@property (nonatomic) NSInteger resetting;
 
 @property float logInterval;
 

@@ -21,6 +21,7 @@
 @property (strong,nonatomic) NSMutableArray *sensorTagsTaskName;
 @property (strong,nonatomic) NSMutableArray *sensorTagsTaskSensor;
 @property (strong,nonatomic) NSMutableArray *sensorTagsTaskInterval;
+@property (strong,nonatomic) NSMutableArray *sensorTagsReminderTime;
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 
