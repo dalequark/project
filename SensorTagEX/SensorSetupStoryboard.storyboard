@@ -26,7 +26,13 @@
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3w-d8-IFa">
                                 <items>
-                                    <navigationItem title="New Task" id="S6H-s3-bcK"/>
+                                    <navigationItem title="New Task" id="S6H-s3-bcK">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hLY-IA-jJr">
+                                            <connections>
+                                                <action selector="cancelSetupPressed" destination="QB3-ef-S4K" id="yBc-tB-M3g"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="64V-HQ-jFY">
@@ -42,7 +48,7 @@
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If I've forgotten for..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaw-6M-CND">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If I haven't done this for..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaw-6M-CND">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Jm1-Sv-x1c"/>
                                 </constraints>
@@ -61,7 +67,6 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose a sensor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-pW-QHp">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="b25-VA-csV"/>
-                                    <constraint firstAttribute="width" constant="148" id="wCc-uQ-FNA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -142,6 +147,22 @@
             <point key="canvasLocation" x="613" y="-524"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SensorSetupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorSetupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dateButtonTapped:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="selectADate:"/>
+                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="intervalSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sensorSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

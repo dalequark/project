@@ -26,7 +26,7 @@
         self.nDevices = [[NSMutableArray alloc]init];
         self.sensorTags = [[NSMutableArray alloc]init];
         self.sensorTagsTaskName = [[NSMutableArray alloc]init];
-        self.title = @"Connecting...";
+        self.title = @"Tracked Tasks";
     }
     return self;
 }
@@ -34,12 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    /* TODO
-     here we should set up an initial view with a spinner
-     and text telling the user that we are waiting to detect sensortags
-     which should go away once at least one sensortag is added to the view
-     */
     
     // set up a back button
     UIBarButtonItem *mailer = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStylePlain target:self action:@selector(backToWalkthrough)];
@@ -154,14 +148,16 @@
     return cell;
 }
 
--(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    // hack: we're just using this as a trigger to update the view
-    if (section == 0 && self.sensorTags.count >= 1) {
-        // found one or multiple sensor tags
-        [[self spinner] stopAnimating];
-        self.title = @"Available Sensors";
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 0) {
+        if (self.sensorTags.count >= 1) {
+            [[self spinner] stopAnimating];
+            return @"Tap on a task to configure the associated sensor.";
+        } else {
+            return @"Searching for sensors...";
+        }
     }
-    return @"";
+    return nil;
 }
 
 -(float) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -179,20 +175,27 @@
     d.p = p;
     d.manager = self.m;
     d.setupData = [self makeSensorTagConfiguration];
-    // END TODO
     
     NSLog(@">>>> %@", [self.sensorTagsTaskName objectAtIndex:indexPath.row]);
     if ([self.sensorTagsTaskName objectAtIndex:indexPath.row] == [NSNull null]) {
+        
         // new sensor, take us to setup page
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"SensorSetupStoryboard" bundle:nil];
         UIViewController *vc = [sb instantiateInitialViewController];
         ((SensorSetupViewController*)vc).setupDevice = d;
         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:vc animated:YES completion:NULL];
+
     } else {
+        
         // existing sensor
         SensorTagApplicationViewController *sensorVC =
             [[SensorTagApplicationViewController alloc]initWithStyle:UITableViewStyleGrouped andSensorTag:d];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+                                                 initWithTitle:@"Tasks"
+                                                 style:UIBarButtonItemStyleBordered
+                                                 target:nil action:nil];
+        sensorVC.title = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:sensorVC animated:YES];
     }
 }
@@ -201,13 +204,13 @@
 
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (central.state != CBCentralManagerStatePoweredOn) {
+        NSLog(@"CoreBluetooth return state: %d",central.state);
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"BLE is not supported. Use an iPhone 4S, iPad 3, iPad Mini, or later device."
-                                  message:[NSString stringWithFormat:@"CoreBluetooth return state: %d",central.state]
+                                  initWithTitle:@"BLE Error"
+                                  message:@"Use an iPhone 4S, iPad 3, iPad Mini, or later."
                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
-    }
-    else {
+    } else {
         [central scanForPeripheralsWithServices:nil options:nil];
     }
 }

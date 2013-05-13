@@ -7,9 +7,10 @@
  */
 
 #import "SensorTagApplicationViewController.h"
+#import "WalkthroughLandingViewController.h"
+#import "deviceSelector.h"
 
 @interface SensorTagApplicationViewController ()
-
 @end
 
 @implementation SensorTagApplicationViewController
@@ -62,11 +63,7 @@
             self.gyroSensor = [[sensorIMU3000 alloc] init];
             
         }
-        
-        
     }
-    [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(alphaFader:) userInfo:nil repeats:YES];
-    
     self.currentVal = [[sensorTagValues alloc]init];
     self.vals = [[NSMutableArray alloc]init];
     
@@ -82,18 +79,15 @@
     if (!self.d.p.isConnected) {
         self.d.manager.delegate = self;
         [self.d.manager connectPeripheral:self.d.p options:nil];
-    }
-    else {
+    } else {
         self.d.p.delegate = self;
         [self configureSensorTag];
-        self.title = @"Sensor Data"; // XXX this should be the task's name
     }
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [self deconfigureSensorTag];
-    
+    [self deconfigureSensorTag];    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -112,7 +106,6 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:[self spinner]];
     [self.navigationItem setRightBarButtonItem:barButton];
     [self.spinner startAnimating];
-   
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,13 +124,6 @@
     if ([cellType isEqualToString:@"Gyroscope"]) return self.gyro.height;
     
     return 50;
-}
-
--(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Logging in progress...";
-    }
-    return @"";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -186,7 +172,6 @@
         CBUUID *pUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Accelerometer period UUID"]];
         NSInteger period = [[self.d.setupData valueForKey:@"Accelerometer period"] integerValue];
         uint8_t periodData = (uint8_t)(period / 10);
-        NSLog(@"%d",periodData);
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:pUUID data:[NSData dataWithBytes:&periodData length:1]];
         uint8_t data = 0x01;
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:cUUID data:[NSData dataWithBytes:&data length:1]];
@@ -211,7 +196,6 @@
         CBUUID *pUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Magnetometer period UUID"]];
         NSInteger period = [[self.d.setupData valueForKey:@"Magnetometer period"] integerValue];
         uint8_t periodData = (uint8_t)(period / 10);
-        NSLog(@"%d",periodData);
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:pUUID data:[NSData dataWithBytes:&periodData length:1]];
         uint8_t data = 0x01;
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:cUUID data:[NSData dataWithBytes:&data length:1]];
@@ -220,6 +204,13 @@
         [self.sensorsEnabled addObject:@"Magnetometer"];
     }
     
+    // create the button to delete this task
+    [self.spinner stopAnimating];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc ]
+                                   initWithTitle:@"Delete"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self action:@selector(deleteTask)];
+    [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
 -(void) deconfigureSensorTag {
@@ -275,16 +266,44 @@
     [peripheral discoverServices:nil];
 }
 
+- (void)deleteTask
+{
+    NSLog(@"deleting task");
+    // send request to our server with data
+    NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
+    NSString *urlString = [NSString stringWithFormat:@"%@?action=disconnect&uuid=%@", baseURL,
+                           CFUUIDCreateString(nil, self.d.p.UUID)];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request,
+                                                   NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
+
+        [self deconfigureSensorTag];
+        
+        // set up the sensortag chooser
+        UIViewController *parent = [[WalkthroughLandingViewController alloc]init];
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
+        UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:parent];
+        [rC pushViewController:dS animated:YES];
+        mainWindow.rootViewController = rC;
+        
+    } failure:nil];
+    [operation start];
+}
 
 #pragma mark - CBperipheral delegate functions
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     // BLE services discovered
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Gyroscope service UUID"]]]) {
+    NSString *uuidString = [self.d.setupData valueForKey:@"Gyroscope service UUID"];
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:uuidString]]) {
         [self configureSensorTag];
     }
-    [self.spinner stopAnimating];
-    // TODO set up a button to edit the task
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
@@ -334,11 +353,6 @@
         
         if (movementVector > ACCELCHANGECUTTOFF)
         {
-            /*
-            NSString* stringToEmail = [NSString stringWithFormat:@"X: % 0.1fG , Y: % 0.1fG , Z: % 0.1fG", x, y, z];
-            NSLog(@"string: %@", stringToEmail);
-             */
-            
             // send request to our server with data
             NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
             NSString *urlString = [NSString stringWithFormat:@"%@?action=accel&uuid=%@", baseURL, CFUUIDCreateString(nil, peripheral.UUID)];
@@ -444,50 +458,6 @@
     NSLog(@"Calibrate gyroscope pressed ! ");
     [self.gyroSensor calibrate];
 }
-
--(void) alphaFader:(NSTimer *)timer {
-    CGFloat w,a;
-    if (self.acc) {
-        [self.acc.accValueX.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.acc.accValueX.textColor = [self.acc.accValueX.textColor colorWithAlphaComponent:a];
-        
-        [self.acc.accValueY.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.acc.accValueY.textColor = [self.acc.accValueY.textColor colorWithAlphaComponent:a];
-        
-        [self.acc.accValueZ.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.acc.accValueZ.textColor = [self.acc.accValueZ.textColor colorWithAlphaComponent:a];
-    }
-    if (self.mag) {
-        [self.mag.accValueX.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.mag.accValueX.textColor = [self.mag.accValueX.textColor colorWithAlphaComponent:a];
-        
-        [self.mag.accValueY.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.mag.accValueY.textColor = [self.mag.accValueY.textColor colorWithAlphaComponent:a];
-        
-        [self.mag.accValueZ.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.mag.accValueZ.textColor = [self.mag.accValueZ.textColor colorWithAlphaComponent:a];
-    }
-    if (self.gyro) {
-        [self.gyro.accValueX.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.gyro.accValueX.textColor = [self.gyro.accValueX.textColor colorWithAlphaComponent:a];
-        
-        [self.gyro.accValueY.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.gyro.accValueY.textColor = [self.gyro.accValueY.textColor colorWithAlphaComponent:a];
-        
-        [self.gyro.accValueZ.textColor getWhite:&w alpha:&a];
-        if (a > MIN_ALPHA_FADE) a -= ALPHA_FADE_STEP;
-        self.gyro.accValueZ.textColor = [self.gyro.accValueZ.textColor colorWithAlphaComponent:a];
-    }
-}
-
 
 -(void) logValues:(NSTimer *)timer {
     NSString *date = [NSDateFormatter localizedStringFromDate:[NSDate date]

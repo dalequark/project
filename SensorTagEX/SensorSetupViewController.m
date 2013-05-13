@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Terrace F. Computer Scientists. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "SensorSetupViewController.h"
 #import "WalkthroughLandingViewController.h"
 #import "AbstractActionSheetPicker.h"
@@ -24,6 +25,8 @@
 @synthesize sensorSegmentedControl = _sensorSegmentedControl;
 @synthesize intervalSegmentedControl = _intervalSegmentedControl;
 @synthesize dateTextField = _dateTextField;
+@synthesize reminderTimeMin = _reminderTimeMin;
+@synthesize reminderTimeHr = _reminderTimeHr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +48,8 @@
     //may have originated from textField or barButtonItem, use an IBOutlet instead of element
     self.dateTextField.text = [NSString stringWithFormat: @"%d:%02d %@",
                                ((hour + 11) % 12) + 1, minute, ((hour < 12) ? @"AM" : @"PM")];
+    self.reminderTimeHr = hour;
+    self.reminderTimeMin = minute;
 }
 
 - (IBAction)dateButtonTapped:(UIBarButtonItem *)sender {
@@ -52,7 +57,23 @@
 }
 
 - (IBAction)doneButtonTapped:(UIButton *)sender {
-    // TODO: check self.nameTextField.text and self.dateTextField.text for validity
+
+    // TODO: fix changing of background colors upon validation failure
+    UIColor *validationFailedColor = [UIColor colorWithRed:255.0 green:252.0 blue:227.0 alpha:1.0];
+    if ([self.nameTextField.text isEqualToString:@""]) {
+        [self.nameTextField setBackgroundColor:validationFailedColor];
+        self.nameTextField.layer.cornerRadius=8.0f;
+        self.nameTextField.layer.masksToBounds=YES;
+    }
+    if ([self.dateTextField.text isEqualToString:@""]) {
+        [self.dateTextField setBackgroundColor:validationFailedColor];
+        self.dateTextField.layer.cornerRadius=8.0f;
+        self.dateTextField.layer.masksToBounds=YES;
+    }
+    if ([self.nameTextField.text isEqualToString:@""] ||
+        [self.dateTextField.text isEqualToString:@""]) {
+        return;
+    }
     
     NSString *sensor;
     if (self.sensorSegmentedControl.selectedSegmentIndex == 0) {
@@ -67,39 +88,66 @@
     
     NSString *phone = @"15102702170"; // TODO
     
+    // format reminderInterval as days (int)
+    NSInteger reminderInterval;
+    if (self.intervalSegmentedControl.selectedSegmentIndex == 0)
+        reminderInterval = 1;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 1)
+        reminderInterval = 2;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 2)
+        reminderInterval = 3;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 3)
+        reminderInterval = 4;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 4)
+        reminderInterval = 5;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 5)
+        reminderInterval = 6;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 6)
+        reminderInterval = 7;
+    else if (self.intervalSegmentedControl.selectedSegmentIndex == 7)
+        reminderInterval = 14;
+    else
+        reminderInterval = 1;
+    
+    // format reminderTime as seconds from start of day (int)
+    NSInteger reminderTime;
+    reminderTime = self.reminderTimeHr * 3600 + self.reminderTimeMin * 60;
+
+    // assemble all URL parameters
     NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
     NSString *urlString =
-    [NSString stringWithFormat:@"%@?action=connect&uuid=%@&task=%@&phone=%@&interval=%@&time=%@&sensor=%@",
-     baseURL,
-     CFUUIDCreateString(nil,self.setupDevice.p.UUID),
+    [NSString stringWithFormat:@"%@?action=connect&uuid=%@&task=%@&phone=%@&interval=%d&time=%d&sensor=%@",
+     baseURL, CFUUIDCreateString(nil,self.setupDevice.p.UUID),
      [self.nameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"],
-     phone, // TODO format phone
-     @"1", // TODO pass the actual interval (self.intervalSegmentedControl.selectedSegmentIndex)
-     @"1", //self.dateTextField.text, // TODO format reminder time as secs from start of day
-     sensor];
-    NSLog(@"%@", urlString);
+     phone, reminderInterval, reminderTime, sensor];
     
+    // send the request
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
     AFJSONRequestOperation *operation =
     [AFJSONRequestOperation
      JSONRequestOperationWithRequest:request
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
          if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
-             // TODO respond to success
+             [self finishSetup];
          } else {
-             // TODO respond to failure
+             // TODO display error on failure
          }
          NSLog(@"%@: %@", [JSON valueForKeyPath:@"status"], [JSON valueForKeyPath:@"message"]);
      }
      failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-         // TODO respond to failure
+         // TODO display error on failure
          NSLog(@"Server error %d: %@", [response statusCode], JSON == NULL ? [error userInfo] : JSON);
      }];
     [operation start];
-    
-	// set up the sensortag chooser
+}
+
+-(IBAction)cancelSetupPressed {
+    [self finishSetup];
+}
+
+-(void)finishSetup {
+    // go back to chooser
     UIViewController *parent = [[WalkthroughLandingViewController alloc]init];
     UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
     deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];

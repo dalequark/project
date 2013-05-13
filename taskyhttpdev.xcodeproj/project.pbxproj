@@ -29,7 +29,6 @@
 		7FF609171654FC5D004F4562 /* Sensors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609141654FC5D004F4562 /* Sensors.m */; };
 		7FF609181654FC5D004F4562 /* SensorTagApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */; };
 		D55067BC173769FF00EDA4B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D55067BA173769FF00EDA4B9 /* Default@2x.png */; };
-		D55067BD173769FF00EDA4B9 /* Default.psd in Resources */ = {isa = PBXBuildFile; fileRef = D55067BB173769FF00EDA4B9 /* Default.psd */; };
 		D56BB9BE173788310002AB23 /* noun_project_3912.png in Resources */ = {isa = PBXBuildFile; fileRef = D56BB9BB173788300002AB23 /* noun_project_3912.png */; };
 		D56BB9BF173788310002AB23 /* noun_project_8606.png in Resources */ = {isa = PBXBuildFile; fileRef = D56BB9BC173788300002AB23 /* noun_project_8606.png */; };
 		D56BB9C0173788310002AB23 /* noun_project_13801.png in Resources */ = {isa = PBXBuildFile; fileRef = D56BB9BD173788300002AB23 /* noun_project_13801.png */; };
@@ -100,7 +99,6 @@
 		7FF609151654FC5D004F4562 /* SensorTagApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTagApplicationViewController.h; sourceTree = "<group>"; };
 		7FF609161654FC5D004F4562 /* SensorTagApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTagApplicationViewController.m; sourceTree = "<group>"; };
 		D55067BA173769FF00EDA4B9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		D55067BB173769FF00EDA4B9 /* Default.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Default.psd; sourceTree = "<group>"; };
 		D56BB9BB173788300002AB23 /* noun_project_3912.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noun_project_3912.png; path = SensorTagEX/noun_project_3912.png; sourceTree = "<group>"; };
 		D56BB9BC173788300002AB23 /* noun_project_8606.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noun_project_8606.png; path = SensorTagEX/noun_project_8606.png; sourceTree = "<group>"; };
 		D56BB9BD173788300002AB23 /* noun_project_13801.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noun_project_13801.png; path = SensorTagEX/noun_project_13801.png; sourceTree = "<group>"; };
@@ -312,7 +310,6 @@
 				D56BB9BC173788300002AB23 /* noun_project_8606.png */,
 				D56BB9BD173788300002AB23 /* noun_project_13801.png */,
 				D55067BA173769FF00EDA4B9 /* Default@2x.png */,
-				D55067BB173769FF00EDA4B9 /* Default.psd */,
 				7F6FC8C816D3AEDA00A5BAB9 /* _icon@2x_114.png */,
 				7F6FC8C616D3AEAD00A5BAB9 /* _icon@2x_144.png */,
 				7F6FC8C416D3AEA500A5BAB9 /* _icon_72.png */,
@@ -355,7 +352,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "Terrace F. Computer Scientists";
+				ORGANIZATIONNAME = TFCS;
 			};
 			buildConfigurationList = 7FF608E01654FBE1004F4562 /* Build configuration list for PBXProject "taskyhttpdev" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -398,7 +395,6 @@
 				D5AC55AD1724B5C500F6647E /* SensorTagEX-Info.plist in Resources */,
 				D5B7D3B21730E52600762CD7 /* SensorSetupStoryboard.storyboard in Resources */,
 				D55067BC173769FF00EDA4B9 /* Default@2x.png in Resources */,
-				D55067BD173769FF00EDA4B9 /* Default.psd in Resources */,
 				D56BB9BE173788310002AB23 /* noun_project_3912.png in Resources */,
 				D56BB9BF173788310002AB23 /* noun_project_8606.png in Resources */,
 				D56BB9C0173788310002AB23 /* noun_project_13801.png in Resources */,

@@ -18,6 +18,8 @@
     @property (nonatomic, strong) IBOutlet UISegmentedControl *intervalSegmentedControl;
     @property (nonatomic, strong) IBOutlet UITextField *dateTextField;
 
+    @property (nonatomic) int reminderTimeMin;
+    @property (nonatomic) int reminderTimeHr;
     @property (nonatomic) NSDate *selectedDate;
     @property (nonatomic, strong) AbstractActionSheetPicker *actionSheetPicker;
     @property (nonatomic, strong) BLEDevice* setupDevice;

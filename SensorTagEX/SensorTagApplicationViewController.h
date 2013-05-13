@@ -26,7 +26,6 @@
 @property (strong,nonatomic) BLEDevice *d;
 @property NSMutableArray *sensorsEnabled;
 
-/// Temperature cell
 @property (strong,nonatomic) accelerometerCellTemplate *display;
 @property (strong,nonatomic) accelerometerCellTemplate *acc;
 @property (strong,nonatomic) accelerometerCellTemplate *mag;
@@ -49,7 +48,6 @@
 - (IBAction) handleCalibrateMag;
 - (IBAction) handleCalibrateGyro;
 
--(void) alphaFader:(NSTimer *)timer;
 -(void) logValues:(NSTimer *)timer;
 
 @end
