@@ -15,7 +15,8 @@
 @end
 
 @implementation deviceSelector
-@synthesize m,nDevices,sensorTags,sensorTagsTaskName;
+@synthesize m, nDevices, sensorTags;
+@synthesize sensorTagsTaskName, sensorTagsTaskSensor, sensorTagsTaskInterval;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,6 +27,8 @@
         self.nDevices = [[NSMutableArray alloc]init];
         self.sensorTags = [[NSMutableArray alloc]init];
         self.sensorTagsTaskName = [[NSMutableArray alloc]init];
+        self.sensorTagsTaskSensor = [[NSMutableArray alloc]init];
+        self.sensorTagsTaskInterval = [[NSMutableArray alloc]init];
         self.title = @"Tracked Tasks";
     }
     return self;
@@ -108,16 +111,22 @@
     [AFJSONRequestOperation
      JSONRequestOperationWithRequest:request
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]){
-            //Existing sensor
+        if ([@"success" isEqualToString:[JSON valueForKeyPath:@"status"]]) {
+            // Existing sensor
             NSString *name = [JSON valueForKeyPath:@"task"];
-            NSLog(@"Found an existing sensor: %@", name);
+            NSString *sensor = [JSON valueForKeyPath:@"sensor"];
+            NSString *interval = [JSON valueForKeyPath:@"interval"];
+            NSLog(@"Found an existing sensor: %@ (%@)", name, sensor);
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:name];
+            [self.sensorTagsTaskSensor replaceObjectAtIndex:indexPath.row withObject:sensor];
+            [self.sensorTagsTaskInterval replaceObjectAtIndex:indexPath.row withObject:interval];
             cell.textLabel.text = name;
         } else {
-            //New sensor
+            // New sensor
             NSLog(@"Found a new sensor");
             [self.sensorTagsTaskName replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
+            [self.sensorTagsTaskSensor replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
+            [self.sensorTagsTaskInterval replaceObjectAtIndex:indexPath.row withObject:[NSNull null]];
             cell.textLabel.text = @"New Sensor";
             cell.detailTextLabel.text= @"Click to add a new task";
         }
@@ -130,21 +139,7 @@
      }];
     [operation start];
     
-/*
-    NSString *uuid = (__bridge_transfer NSString*)CFUUIDCreateString(nil, p.UUID);
-    if ([@"F9975A13-2051-0933-CFA0-61398837856F" isEqualToString:uuid]) {
-        cell.textLabel.text = @"Go to gym";
-        cell.detailTextLabel.text = @"Every three days";
-    } else if ([@"34F29E64-1B18-DA34-32E3-6100CBB35B3E" isEqualToString:uuid]) {
-        cell.textLabel.text = @"Read HCI textbook";
-        cell.detailTextLabel.text = @"Every seven days";
-    } else {
-        cell.textLabel.text = @"Take vitamins";
-        cell.detailTextLabel.text = @"Every day";
-    }
-  */
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
     return cell;
 }
 
@@ -158,10 +153,6 @@
         }
     }
     return nil;
-}
-
--(float) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 150.0f;
 }
 
 #pragma mark - Table view delegate
@@ -196,6 +187,20 @@
                                                  style:UIBarButtonItemStyleBordered
                                                  target:nil action:nil];
         sensorVC.title = [self.sensorTagsTaskName objectAtIndex:indexPath.row];
+        sensorVC.taskIntervalLen = [self.sensorTagsTaskInterval objectAtIndex:indexPath.row];
+        if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"accel"]){
+            sensorVC.acc.hidden = @"YES";
+            sensorVC.acc.height = 0;
+        }
+        if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"magneto"]){
+            sensorVC.mag.hidden = @"YES";
+            sensorVC.mag.height = 0;
+        }
+        if (![[self.sensorTagsTaskSensor objectAtIndex:indexPath.row] isEqualToString:@"gyro"]){
+            sensorVC.gyro.hidden = @"YES";
+            sensorVC.gyro.height = 0;
+        }
+
         [self.navigationController pushViewController:sensorVC animated:YES];
     }
 }
@@ -257,12 +262,16 @@
             if ([p isEqual:peripheral]) {
                     [self.sensorTags replaceObjectAtIndex:ii withObject:peripheral];
                     [self.sensorTagsTaskName replaceObjectAtIndex:ii withObject:[NSNull null]];
+                    [self.sensorTagsTaskSensor replaceObjectAtIndex:ii withObject:[NSNull null]];
+                    [self.sensorTagsTaskInterval replaceObjectAtIndex:ii withObject:[NSNull null]];
                     replace = YES;
                 }
             }
         if (!replace) {
             [self.sensorTags addObject:peripheral];
             [self.sensorTagsTaskName addObject:[NSNull null]];
+            [self.sensorTagsTaskSensor addObject:[NSNull null]];
+            [self.sensorTagsTaskInterval addObject:[NSNull null]];
             [self.tableView reloadData];
         }
     }

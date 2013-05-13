@@ -54,6 +54,10 @@
 		D5AC55B61724E8E100F6647E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AC55B51724E8E100F6647E /* SystemConfiguration.framework */; };
 		D5B7D3B21730E52600762CD7 /* SensorSetupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */; };
 		D5C10B281730D9E40053E426 /* SensorSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C10B271730D9E40053E426 /* SensorSetupViewController.m */; };
+		D5C594C0174082750000FC18 /* SensorTagApplication.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C594BF174082740000FC18 /* SensorTagApplication.xib */; };
+		D5C594C417408F090000FC18 /* accelerometer.png in Resources */ = {isa = PBXBuildFile; fileRef = D5C594C117408F070000FC18 /* accelerometer.png */; };
+		D5C594C517408F090000FC18 /* gyroscope.png in Resources */ = {isa = PBXBuildFile; fileRef = D5C594C217408F080000FC18 /* gyroscope.png */; };
+		D5C594C617408F090000FC18 /* magnetometer.png in Resources */ = {isa = PBXBuildFile; fileRef = D5C594C317408F080000FC18 /* magnetometer.png */; };
 		D5DE105F1724A85C00FD1598 /* 170px-Bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */; };
 		D5DE10601724A85C00FD1598 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10571724A85C00FD1598 /* Default-568h@2x.png */; };
 		D5DE10611724A85C00FD1598 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DE10581724A85C00FD1598 /* Default.png */; };
@@ -145,6 +149,10 @@
 		D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SensorSetupStoryboard.storyboard; sourceTree = "<group>"; };
 		D5C10B261730D9E40053E426 /* SensorSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorSetupViewController.h; sourceTree = "<group>"; };
 		D5C10B271730D9E40053E426 /* SensorSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorSetupViewController.m; sourceTree = "<group>"; };
+		D5C594BF174082740000FC18 /* SensorTagApplication.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SensorTagApplication.xib; sourceTree = "<group>"; };
+		D5C594C117408F070000FC18 /* accelerometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = accelerometer.png; path = SensorTagEX/accelerometer.png; sourceTree = "<group>"; };
+		D5C594C217408F080000FC18 /* gyroscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gyroscope.png; path = SensorTagEX/gyroscope.png; sourceTree = "<group>"; };
+		D5C594C317408F080000FC18 /* magnetometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = magnetometer.png; path = SensorTagEX/magnetometer.png; sourceTree = "<group>"; };
 		D5DE10561724A85C00FD1598 /* 170px-Bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "170px-Bluetooth.png"; sourceTree = "<group>"; };
 		D5DE10571724A85C00FD1598 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D5DE10581724A85C00FD1598 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -217,6 +225,7 @@
 				D594DB851730F9380011FD7D /* NSDate+TCUtils.m */,
 				D5C10B261730D9E40053E426 /* SensorSetupViewController.h */,
 				D5C10B271730D9E40053E426 /* SensorSetupViewController.m */,
+				D5C594BF174082740000FC18 /* SensorTagApplication.xib */,
 				D5DE105C1724A85C00FD1598 /* MainStoryboard.storyboard */,
 				D5B7D3B11730E52600762CD7 /* SensorSetupStoryboard.storyboard */,
 				D5AC55B01724E81C00F6647E /* WalkthroughLandingViewController.h */,
@@ -306,6 +315,9 @@
 		D5DE106A1724A91700FD1598 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D5C594C117408F070000FC18 /* accelerometer.png */,
+				D5C594C217408F080000FC18 /* gyroscope.png */,
+				D5C594C317408F080000FC18 /* magnetometer.png */,
 				D56BB9BB173788300002AB23 /* noun_project_3912.png */,
 				D56BB9BC173788300002AB23 /* noun_project_8606.png */,
 				D56BB9BD173788300002AB23 /* noun_project_13801.png */,
@@ -398,6 +410,10 @@
 				D56BB9BE173788310002AB23 /* noun_project_3912.png in Resources */,
 				D56BB9BF173788310002AB23 /* noun_project_8606.png in Resources */,
 				D56BB9C0173788310002AB23 /* noun_project_13801.png in Resources */,
+				D5C594C0174082750000FC18 /* SensorTagApplication.xib in Resources */,
+				D5C594C417408F090000FC18 /* accelerometer.png in Resources */,
+				D5C594C517408F090000FC18 /* gyroscope.png in Resources */,
+				D5C594C617408F090000FC18 /* magnetometer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

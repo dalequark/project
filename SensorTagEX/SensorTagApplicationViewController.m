@@ -16,7 +16,7 @@
 @implementation SensorTagApplicationViewController
 
 @synthesize d;
-@synthesize sensorsEnabled;
+@synthesize sensorsEnabled, taskSensorName, taskIntervalLen;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,7 +32,6 @@
     self = [super initWithStyle:style];
     if (self) {
         self.d = andSensorTag;
-       // self.display = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"display"];
         
         if (!self.acc) {
             self.acc = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Accelerometer"];
@@ -40,7 +39,7 @@
             self.acc.accValueX.text = @"-";
             self.acc.accValueY.text = @"-";
             self.acc.accValueZ.text = @"-";
-            self.acc.accCalibrateButton.hidden = YES;
+            self.acc.accCalibrateButton.hidden = @"YES";
         }
         if (!self.mag) {
             self.mag = [[accelerometerCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Magnetometer"];
@@ -116,40 +115,81 @@
 
 #pragma mark - Table view data source
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row];
-    
-    if ([cellType isEqualToString:@"Accelerometer"]) return self.acc.height;
-    if ([cellType isEqualToString:@"Magnetometer"]) return self.mag.height;
-    if ([cellType isEqualToString:@"Gyroscope"]) return self.gyro.height;
-    
-    return 50;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.sensorsEnabled.count;
+    // Return the number of rows in the section, plus a header (stats) and footer (histogram)
+    if (section == 0) return self.sensorsEnabled.count+2;
+    else return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        return 200;
+    }
+    
+    if (indexPath.row == 0) {
+        return 50;
+        
+    } else if (indexPath.row == self.sensorsEnabled.count+1) {
+        return 50;
+        
+    } else {
+        NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row-1];
+        if ([cellType isEqualToString:@"Accelerometer"]) return self.acc.height;
+        if ([cellType isEqualToString:@"Magnetometer"]) return self.mag.height;
+        if ([cellType isEqualToString:@"Gyroscope"]) return self.gyro.height;
+        else return 0;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Sensor Configuration";
+    } else if (section == 1) {
+        return @"Task History";
+    } else {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row];
+    if (indexPath.section == 1) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
+        cell.textLabel.text = @"You've never done this task!";
+        cell.detailTextLabel.text = @"never ever really";
+        return cell;
+    }
     
-    if ([cellType isEqualToString:@"Accelerometer"]) {
-        return self.acc;
-    }
-    else if ([cellType isEqualToString:@"Gyroscope"]) {
-        return self.gyro;
-    }
-    else if ([cellType isEqualToString:@"Magnetometer"]) {
-        return self.mag;
+    if (indexPath.row == 0) {
+        // header
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"headercell"];
+        cell.textLabel.text = @"Remind me after 7 days";
+        cell.detailTextLabel.text = @"via push notification around 10pm";
+        return cell;
+
+    } else if ( indexPath.row == self.sensorsEnabled.count+1) {
+        // footer
+        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        return cell;
+        
+    } else {
+        NSString *cellType = [self.sensorsEnabled objectAtIndex:indexPath.row-1];
+        if ([cellType isEqualToString:@"Accelerometer"]) {
+            return self.acc;
+        }
+        else if ([cellType isEqualToString:@"Gyroscope"]) {
+            return self.gyro;
+        }
+        else if ([cellType isEqualToString:@"Magnetometer"]) {
+            return self.mag;
+        }
     }
     
     // Something has gone wrong, because we should never get here, return empty cell
@@ -253,8 +293,6 @@
     return [val integerValue];
 }
 
-
-
 #pragma mark - CBCentralManager delegate function
 
 -(void) centralManagerDidUpdateState:(CBCentralManager *)central {
@@ -268,7 +306,6 @@
 
 - (void)deleteTask
 {
-    NSLog(@"deleting task");
     // send request to our server with data
     NSString *baseURL = @"http://cstedman.mycpanel.princeton.edu/hci/backend.php/";
     NSString *urlString = [NSString stringWithFormat:@"%@?action=disconnect&uuid=%@", baseURL,

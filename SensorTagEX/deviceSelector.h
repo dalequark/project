@@ -19,6 +19,8 @@
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *sensorTags;
 @property (strong,nonatomic) NSMutableArray *sensorTagsTaskName;
+@property (strong,nonatomic) NSMutableArray *sensorTagsTaskSensor;
+@property (strong,nonatomic) NSMutableArray *sensorTagsTaskInterval;
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 

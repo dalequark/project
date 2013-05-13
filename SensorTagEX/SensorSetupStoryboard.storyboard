@@ -12,14 +12,6 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IIy-A8-pf0">
-                                <segments>
-                                    <segment title="Motion"/>
-                                    <segment title="Gyro"/>
-                                    <segment title="Magnet"/>
-                                </segments>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W43-ra-hAb">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
@@ -50,23 +42,26 @@
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If I haven't done this for..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaw-6M-CND">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Jm1-Sv-x1c"/>
+                                    <constraint firstAttribute="height" constant="21" id="tsI-zf-6TF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="287" translatesAutoresizingMaskIntoConstraints="NO" id="eUG-6l-afk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="CiV-f8-DJt"/>
+                                </constraints>
+                                <string key="text">Attach the selected sensor to
+ the object you are tracking.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Remind me at..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-V5-AUe">
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="VLo-8R-Kze"/>
                                     <constraint firstAttribute="height" constant="21" id="a1p-WW-oX6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose a sensor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-pW-QHp">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="b25-VA-csV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,7 +69,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="days" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbQ-NB-OrF">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="oPT-gQ-zCN"/>
+                                    <constraint firstAttribute="height" constant="21" id="EFa-3w-SpQ"/>
                                     <constraint firstAttribute="width" constant="36" id="rUC-yc-9RD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -104,34 +99,41 @@
                                     <action selector="selectADate:" destination="QB3-ef-S4K" eventType="touchDown" id="pEW-zc-dej"/>
                                 </connections>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-5J-sFe">
+                                <segments>
+                                    <segment title="Motion Trigger"/>
+                                    <segment title="Magnet Trigger"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="W43-ra-hAb" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="16" id="3qf-jC-o22"/>
-                            <constraint firstItem="pbQ-NB-OrF" firstAttribute="top" secondItem="64V-HQ-jFY" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3zX-Vs-CLh"/>
-                            <constraint firstItem="W43-ra-hAb" firstAttribute="leading" secondItem="IIy-A8-pf0" secondAttribute="leading" type="default" id="5Vh-Tq-lB5"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="leading" secondItem="zSV-Z0-2o9" secondAttribute="leading" type="default" id="5m7-jh-qbj"/>
+                            <constraint firstItem="pbQ-NB-OrF" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="5cl-Pv-eBi"/>
+                            <constraint firstItem="r2t-4Z-vJB" firstAttribute="top" secondItem="eUG-6l-afk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5wh-EN-vTi"/>
                             <constraint firstItem="zSV-Z0-2o9" firstAttribute="top" secondItem="UaV-V5-AUe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9QK-GJ-cRf"/>
-                            <constraint firstItem="UaV-V5-AUe" firstAttribute="trailing" secondItem="SI3-pW-QHp" secondAttribute="trailing" type="default" id="Bdd-ZM-DFi"/>
+                            <constraint firstItem="eUG-6l-afk" firstAttribute="leading" secondItem="64V-HQ-jFY" secondAttribute="leading" type="default" id="BYz-xM-Mid"/>
+                            <constraint firstItem="dwg-5J-sFe" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="106" id="Bs3-pI-gYa"/>
+                            <constraint firstItem="jaw-6M-CND" firstAttribute="centerY" secondItem="AaB-rv-ZLs" secondAttribute="centerY" type="default" id="C5a-3w-XhS"/>
+                            <constraint firstItem="zSV-Z0-2o9" firstAttribute="leading" secondItem="dwg-5J-sFe" secondAttribute="leading" type="default" id="CK9-KB-Yi7"/>
                             <constraint firstItem="jaw-6M-CND" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ci0-ZZ-ta6"/>
-                            <constraint firstItem="zSV-Z0-2o9" firstAttribute="leading" secondItem="64V-HQ-jFY" secondAttribute="leading" type="default" id="CyV-NL-anS"/>
+                            <constraint firstItem="UaV-V5-AUe" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="148" id="CvO-9f-38x"/>
                             <constraint firstAttribute="bottom" secondItem="r2t-4Z-vJB" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="DAg-CM-6i9"/>
-                            <constraint firstAttribute="bottom" secondItem="pbQ-NB-OrF" secondAttribute="bottom" constant="111" id="DKZ-Th-UWL"/>
-                            <constraint firstItem="W43-ra-hAb" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="61" id="GUR-0F-7SX"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="top" secondItem="SI3-pW-QHp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="MBG-sg-1kh"/>
-                            <constraint firstItem="M3w-d8-IFa" firstAttribute="centerX" secondItem="r2t-4Z-vJB" secondAttribute="centerX" type="default" id="QwS-MV-boP"/>
+                            <constraint firstItem="64V-HQ-jFY" firstAttribute="trailing" secondItem="zSV-Z0-2o9" secondAttribute="trailing" type="default" id="Km9-8C-nX5"/>
+                            <constraint firstItem="zSV-Z0-2o9" firstAttribute="trailing" secondItem="dwg-5J-sFe" secondAttribute="trailing" type="default" id="Mm0-St-54b"/>
+                            <constraint firstItem="dwg-5J-sFe" firstAttribute="trailing" secondItem="W43-ra-hAb" secondAttribute="trailing" type="default" id="OR4-11-VRq"/>
+                            <constraint firstItem="M3w-d8-IFa" firstAttribute="centerX" secondItem="W43-ra-hAb" secondAttribute="centerX" type="default" id="PJY-aS-UKA"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" type="default" id="ReF-CY-vgP"/>
-                            <constraint firstItem="SI3-pW-QHp" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="104" id="TOh-X6-Fth"/>
-                            <constraint firstItem="SI3-pW-QHp" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yak-XZ-BbL"/>
+                            <constraint firstItem="zSV-Z0-2o9" firstAttribute="centerX" secondItem="AaB-rv-ZLs" secondAttribute="centerX" type="default" id="Sea-kG-54J"/>
                             <constraint firstItem="M3w-d8-IFa" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" type="default" id="Zk2-cL-IWb"/>
-                            <constraint firstItem="pbQ-NB-OrF" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="a2i-ah-BoC"/>
-                            <constraint firstItem="M3w-d8-IFa" firstAttribute="trailing" secondItem="AaB-rv-ZLs" secondAttribute="trailing" type="default" id="eMR-Kh-YkX"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="trailing" secondItem="W43-ra-hAb" secondAttribute="trailing" type="default" id="fKZ-JA-Bq7"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="trailing" secondItem="64V-HQ-jFY" secondAttribute="trailing" type="default" id="ler-Hs-cr0"/>
-                            <constraint firstItem="UaV-V5-AUe" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="176" id="nSf-Th-yeN"/>
+                            <constraint firstItem="r2t-4Z-vJB" firstAttribute="centerX" secondItem="eUG-6l-afk" secondAttribute="centerX" type="default" id="bhy-CU-Rap"/>
+                            <constraint firstItem="64V-HQ-jFY" firstAttribute="top" secondItem="jaw-6M-CND" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eFG-Yf-nPs"/>
+                            <constraint firstItem="dwg-5J-sFe" firstAttribute="leading" secondItem="W43-ra-hAb" secondAttribute="leading" type="default" id="eNg-bF-tHJ"/>
+                            <constraint firstAttribute="bottom" secondItem="pbQ-NB-OrF" secondAttribute="bottom" constant="141" id="gJ8-m9-YkT"/>
+                            <constraint firstItem="pbQ-NB-OrF" firstAttribute="trailing" secondItem="eUG-6l-afk" secondAttribute="trailing" type="default" id="m2a-K9-Diq"/>
+                            <constraint firstItem="64V-HQ-jFY" firstAttribute="leading" secondItem="zSV-Z0-2o9" secondAttribute="leading" type="default" id="nSJ-Bj-IOn"/>
                             <constraint firstItem="UaV-V5-AUe" firstAttribute="leading" secondItem="AaB-rv-ZLs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ogb-dX-eNO"/>
-                            <constraint firstAttribute="bottom" secondItem="jaw-6M-CND" secondAttribute="bottom" constant="189" id="vs5-je-Vu2"/>
-                            <constraint firstItem="IIy-A8-pf0" firstAttribute="trailing" secondItem="zSV-Z0-2o9" secondAttribute="trailing" type="default" id="ygm-My-4BF"/>
+                            <constraint firstItem="W43-ra-hAb" firstAttribute="top" secondItem="AaB-rv-ZLs" secondAttribute="top" constant="62" id="zOr-YW-2fR"/>
                             <constraint firstItem="UaV-V5-AUe" firstAttribute="trailing" secondItem="jaw-6M-CND" secondAttribute="trailing" type="default" id="zkJ-nE-2bS"/>
                         </constraints>
                     </view>
@@ -139,7 +141,6 @@
                         <outlet property="dateTextField" destination="zSV-Z0-2o9" id="qDm-1A-3aR"/>
                         <outlet property="intervalSegmentedControl" destination="64V-HQ-jFY" id="OPB-NE-y3b"/>
                         <outlet property="nameTextField" destination="W43-ra-hAb" id="1F1-rf-02y"/>
-                        <outlet property="sensorSegmentedControl" destination="IIy-A8-pf0" id="9RS-uX-eUx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGV-mr-Sts" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,22 +148,6 @@
             <point key="canvasLocation" x="613" y="-524"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SensorSetupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorSetupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dateButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="selectADate:"/>
-                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="intervalSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sensorSegmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

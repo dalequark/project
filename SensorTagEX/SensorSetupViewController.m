@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Terrace F. Computer Scientists. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "SensorSetupViewController.h"
 #import "WalkthroughLandingViewController.h"
 #import "AbstractActionSheetPicker.h"
@@ -62,13 +61,9 @@
     UIColor *validationFailedColor = [UIColor colorWithRed:255.0 green:252.0 blue:227.0 alpha:1.0];
     if ([self.nameTextField.text isEqualToString:@""]) {
         [self.nameTextField setBackgroundColor:validationFailedColor];
-        self.nameTextField.layer.cornerRadius=8.0f;
-        self.nameTextField.layer.masksToBounds=YES;
     }
     if ([self.dateTextField.text isEqualToString:@""]) {
         [self.dateTextField setBackgroundColor:validationFailedColor];
-        self.dateTextField.layer.cornerRadius=8.0f;
-        self.dateTextField.layer.masksToBounds=YES;
     }
     if ([self.nameTextField.text isEqualToString:@""] ||
         [self.dateTextField.text isEqualToString:@""]) {
@@ -79,9 +74,9 @@
     if (self.sensorSegmentedControl.selectedSegmentIndex == 0) {
         sensor = @"accel";
     } else if (self.sensorSegmentedControl.selectedSegmentIndex == 1) {
-        sensor = @"gyro";
-    } else if (self.sensorSegmentedControl.selectedSegmentIndex == 2) {
         sensor = @"magneto";
+    } else if (self.sensorSegmentedControl.selectedSegmentIndex == 2) {
+        //sensor = @"magneto";
     } else {
         sensor = @"unknown";
     }

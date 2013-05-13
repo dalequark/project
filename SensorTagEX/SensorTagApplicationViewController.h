@@ -22,21 +22,23 @@
 
 @interface SensorTagApplicationViewController : UITableViewController <CBCentralManagerDelegate,CBPeripheralDelegate,MFMailComposeViewControllerDelegate>
 
-@property (strong,nonatomic) UIActivityIndicatorView *spinner;
-@property (strong,nonatomic) BLEDevice *d;
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) BLEDevice *d;
 @property NSMutableArray *sensorsEnabled;
 
-@property (strong,nonatomic) accelerometerCellTemplate *display;
-@property (strong,nonatomic) accelerometerCellTemplate *acc;
-@property (strong,nonatomic) accelerometerCellTemplate *mag;
-@property (strong,nonatomic) sensorMAG3110 *magSensor;
-@property (strong,nonatomic) accelerometerCellTemplate *gyro;
-@property (strong,nonatomic) sensorIMU3000 *gyroSensor;
+@property (strong, nonatomic) accelerometerCellTemplate *display;
+@property (strong, nonatomic) accelerometerCellTemplate *acc;
+@property (strong, nonatomic) accelerometerCellTemplate *mag;
+@property (strong, nonatomic) sensorMAG3110 *magSensor;
+@property (strong, nonatomic) accelerometerCellTemplate *gyro;
+@property (strong, nonatomic) sensorIMU3000 *gyroSensor;
 
+@property (strong, nonatomic) NSString *taskSensorName;
+@property (strong, nonatomic) NSString *taskIntervalLen;
 
-@property (strong,nonatomic) sensorTagValues *currentVal;
-@property (strong,nonatomic) NSMutableArray *vals;
-@property (strong,nonatomic) NSTimer *logTimer;
+@property (strong, nonatomic) sensorTagValues *currentVal;
+@property (strong, nonatomic) NSMutableArray *vals;
+@property (strong, nonatomic) NSTimer *logTimer;
 
 @property float logInterval;
 

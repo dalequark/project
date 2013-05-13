@@ -242,7 +242,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.height = 250;
+        if (!self.hidden) {
+            self.height = 250;
+        }
         
         // Initialization code
         self.accLabel = [[UILabel alloc] init];
@@ -251,7 +253,7 @@
         self.accLabel.backgroundColor = [UIColor clearColor];
         
         self.accIcon = [[UIImageView alloc] init];
-        self.accIcon.image = [UIImage imageNamed:@"accelerometer.png"];
+        self.accIcon.image = [UIImage imageNamed:@"gyroscope.png"];
         [self.accIcon setAutoresizingMask:UIViewAutoresizingNone];
         self.accIcon.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -326,8 +328,10 @@
     CGRect contentRect = self.contentView.bounds;
     CGRect fr;
 
-    if (self.contentView.bounds.size.width < WIDTH_CHECKER) self.height = 220;
-    else self.height = 150;
+    if (!self.hidden) {
+        if (self.contentView.bounds.size.width < WIDTH_CHECKER) self.height = 220;
+        else self.height = 150;
+    }
     
     if (contentRect.size.width < WIDTH_CHECKER) {
     
